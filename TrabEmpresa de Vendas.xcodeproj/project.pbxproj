@@ -1,0 +1,281 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F1E9CF7E1BDE82D70004007E /* EntradaSaida.c in Sources */ = {isa = PBXBuildFile; fileRef = F1E9CF791BDE82D70004007E /* EntradaSaida.c */; };
+		F1E9CF7F1BDE82D70004007E /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = F1E9CF7B1BDE82D70004007E /* main.c */; };
+		F1E9CF801BDE82D70004007E /* programaVendas.c in Sources */ = {isa = PBXBuildFile; fileRef = F1E9CF7C1BDE82D70004007E /* programaVendas.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F10B28771BD7B334002B38D7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F10B28791BD7B334002B38D7 /* TrabEmpresa de Vendas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "TrabEmpresa de Vendas"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1E9CF791BDE82D70004007E /* EntradaSaida.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = EntradaSaida.c; path = TrabEmpresa_de_Vendas/EntradaSaida.c; sourceTree = SOURCE_ROOT; };
+		F1E9CF7A1BDE82D70004007E /* EntradaSaida.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntradaSaida.h; path = TrabEmpresa_de_Vendas/EntradaSaida.h; sourceTree = SOURCE_ROOT; };
+		F1E9CF7B1BDE82D70004007E /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = main.c; path = TrabEmpresa_de_Vendas/main.c; sourceTree = SOURCE_ROOT; };
+		F1E9CF7C1BDE82D70004007E /* programaVendas.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = programaVendas.c; path = TrabEmpresa_de_Vendas/programaVendas.c; sourceTree = SOURCE_ROOT; };
+		F1E9CF7D1BDE82D70004007E /* programaVendas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = programaVendas.h; path = TrabEmpresa_de_Vendas/programaVendas.h; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F10B28761BD7B334002B38D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F10B28701BD7B333002B38D7 = {
+			isa = PBXGroup;
+			children = (
+				F10B287B1BD7B334002B38D7 /* TrabEmpresa de Vendas */,
+				F10B287A1BD7B334002B38D7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F10B287A1BD7B334002B38D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F10B28791BD7B334002B38D7 /* TrabEmpresa de Vendas */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F10B287B1BD7B334002B38D7 /* TrabEmpresa de Vendas */ = {
+			isa = PBXGroup;
+			children = (
+				F1E9CF7A1BDE82D70004007E /* EntradaSaida.h */,
+				F1E9CF791BDE82D70004007E /* EntradaSaida.c */,
+				F1E9CF7B1BDE82D70004007E /* main.c */,
+				F1E9CF7C1BDE82D70004007E /* programaVendas.c */,
+				F1E9CF7D1BDE82D70004007E /* programaVendas.h */,
+			);
+			path = "TrabEmpresa de Vendas";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F10B28781BD7B334002B38D7 /* TrabEmpresa de Vendas */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F10B28801BD7B334002B38D7 /* Build configuration list for PBXNativeTarget "TrabEmpresa de Vendas" */;
+			buildPhases = (
+				F10B28751BD7B334002B38D7 /* Sources */,
+				F10B28761BD7B334002B38D7 /* Frameworks */,
+				F10B28771BD7B334002B38D7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TrabEmpresa de Vendas";
+			productName = "TrabEmpresa de Vendas";
+			productReference = F10B28791BD7B334002B38D7 /* TrabEmpresa de Vendas */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F10B28711BD7B334002B38D7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				KnownAssetTags = (
+					New,
+				);
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Rafael Auyer";
+				TargetAttributes = {
+					F10B28781BD7B334002B38D7 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+				};
+			};
+			buildConfigurationList = F10B28741BD7B334002B38D7 /* Build configuration list for PBXProject "TrabEmpresa de Vendas" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F10B28701BD7B333002B38D7;
+			productRefGroup = F10B287A1BD7B334002B38D7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F10B28781BD7B334002B38D7 /* TrabEmpresa de Vendas */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F10B28751BD7B334002B38D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1E9CF801BDE82D70004007E /* programaVendas.c in Sources */,
+				F1E9CF7E1BDE82D70004007E /* EntradaSaida.c in Sources */,
+				F1E9CF7F1BDE82D70004007E /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F10B287E1BD7B334002B38D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-L/Users/Auyer/Documents/Facul/C/PC1",
+					fontes/TrabEmpresa,
+					de,
+					Vendas/TrabEmpresa,
+					de,
+					Vendas,
+				);
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F10B287F1BD7B334002B38D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-L/Users/Auyer/Documents/Facul/C/PC1",
+					fontes/TrabEmpresa,
+					de,
+					Vendas/TrabEmpresa,
+					de,
+					Vendas,
+					"-lfftw3",
+					"-lm",
+				);
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F10B28811BD7B334002B38D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INSTALL_PATH = "/Users/Auyer/Documents/Facul/C/PC1 fontes/TrabEmpresa de Vendas";
+				"OTHER_LDFLAGS[arch=*]" = "-L/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/  ";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F10B28821BD7B334002B38D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INSTALL_PATH = "/Users/Auyer/Documents/Facul/C/PC1 fontes/TrabEmpresa de Vendas";
+				"OTHER_LDFLAGS[arch=*]" = "-L/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/ ";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F10B28741BD7B334002B38D7 /* Build configuration list for PBXProject "TrabEmpresa de Vendas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F10B287E1BD7B334002B38D7 /* Debug */,
+				F10B287F1BD7B334002B38D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F10B28801BD7B334002B38D7 /* Build configuration list for PBXNativeTarget "TrabEmpresa de Vendas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F10B28811BD7B334002B38D7 /* Debug */,
+				F10B28821BD7B334002B38D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F10B28711BD7B334002B38D7 /* Project object */;
+}
