@@ -35,24 +35,24 @@ typedef struct cadMaterial
     
 } listaMateriais;
 
-void controle();
+void controle( listaFuncionarios*, listaMateriais*);
 //Abre o programa. Controla a abertura, reabertura e fechamento do menu.
 //Finaliza o programa com os agradecimentos. Nao há entradas ou saidas de dados.
 
 
 
-int menu();
+int menu(  listaFuncionarios*, listaMateriais*);
 //Chama o menu com as funçoes do programa
 //Sem entrada nem saida
 
 
 
 
-int cadastroFuncionario();
+int cadastroFuncionario(listaFuncionarios**);
 //cadastro de funcionario
 //retorna 1 se o cadastro foi efetuado, 0 se falhou
 
-int consultaFuncionario();
+int consultaFuncionario(listaFuncionarios*);
 //consulta de funcionario
 //Entrada: struct de cadastro de funcionarios
 //retorna se a consulta foi bem sucedida, 0 se falhou
