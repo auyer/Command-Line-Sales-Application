@@ -14,7 +14,7 @@
 
 
 void controle( ){
-    char loja[50];
+    char loja[50], parada;
     *loja= *entradaString("\nDigite o nome do estabelecimento: ");
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     //system("cls");
@@ -35,11 +35,13 @@ void controle( ){
     printf("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - ");
     printf("\n\n Digite qualquer tecla para continuar");
     fflush(stdin);
-    getchar();
+    scanf(" %c", &parada);
+    fflush(stdin);
 }
 
 int menu(){
     int escolha;
+    char parada;
     printf("\n------------------------------------------------------");
     printf("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - ");
     printf("\n\n 1 - Cadastrar Novo Funcionario");
@@ -66,33 +68,34 @@ int menu(){
             //consulta de funcionario
             break;
         case 3:
-            //cadastroMateriais();
+            //return adastroMateriais();
             //cadastra os materiais
             break;
         case 4:
-            //alteracaoMaterial();
+            //return alteracaoMaterial();
             //alteracao de materiais
             break;
         case 5:
-            //consultaMaterialCod();
+            //return consultaMaterialCod();
             //consulta de materiais por codigo
             break;
         case 6:
-            //consultaMaterialDesc();
+            //return consultaMaterialDesc();
             //consulta de materiais por descricao
             break;
         case 7:
-           // controleVendas();
+           // return controleVendas();
             //controle de vendas (Nota fiscal e consietencia de estoque)
             break;
         case 8:
-            // estoqueAbaixoMinimo();
+            // return estoqueAbaixoMinimo();
             //lista de produtos abaixo do estoque
             break;
         default:
             if ( escolha != 9){
                 printf("\nOpcao incorreta, escolha novamente");
                 printf("\n\n Digite qualquer tecla para continuar");
+                scanf(" %c", &parada);
                 fflush(stdin);
                // getch();
                 return 1;
@@ -105,79 +108,100 @@ int menu(){
 
 int cadastroFuncionario(){
     char parada, testeFDL, aux;
+    int n=1;
+    listaFuncionarios* elementoTeste;
     printf("\n\n\n-------------Cadastro de Funcionarios-------------");
     FILE *arquivoDf;
     if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/df.txt", "a")) == NULL){
         printf("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa");
         scanf("%c", &parada);
+        fflush(stdin);
+        return 0;
     }
-
     aux=fscanf(arquivoDf, "%c", & testeFDL);
-    if(aux == EOF){
-        fflush(arquivoDf);
-        listaFuncionarios* novoElemento= (listaFuncionarios*)malloc(sizeof(listaFuncionarios));
-        strcpy(novoElemento->nome,entradaString("\nDigite o nome do Funcionario: "));
-        novoElemento->idade= entradaInt("\nDigite a idade do Funcioario: ");
-        strcpy(novoElemento->cpf,entradaCPF("\nDigite o CPF do funcionario: "));
-        novoElemento->matricula=01;
-        //novoElemento->prox=NULL;
-        //funcionarios= &novoElemento;
-        fwrite(novoElemento,sizeof(listaFuncionarios),1, arquivoDf);
-        fflush(arquivoDf);
-        
-    }else{
-        listaFuncionarios* novoElemento = (listaFuncionarios*)malloc(sizeof(listaFuncionarios));
-        strcpy(novoElemento->nome,entradaString("\nDigite o nome do Funcionario: "));
-        novoElemento->idade= entradaInt("\nDigite a idade do Funcioario: ");
-        strcpy(novoElemento->cpf,entradaCPF("\nDigite o CPF do funcionario: "));
-        //
-        // Como acessar a matricula do funcionario que ocupa a posiçao anterior da lista? ( novoElemento->matricula= matriculaDoAnterior++;)
-        //
-        //novoElemento->prox=NULL;
-        
-       // listaFuncionarios* p;
-        //for( p = funcionarios; p->prox !=NULL; p=p->prox){
-          //  p->prox=novoElemento;
-        //}
-        //for(int n=1; EOF!=fscanf(arquivoDf, &testeFDL) ; fseek(arquivoDf, n* sizeof(listaFuncionarios), SEEK_SET) ){
-           // novoElemento->matricula=n;
-        //}
-        
-    }
+    //aux=fscanf(arquivoDf, "%c", & testeFDL);
+    for(int n=1; aux!=EOF; n++, aux=fread(elementoTeste,sizeof(listaFuncionarios),n, arquivoDf));
+    
+    fflush(arquivoDf);
+    fseek(arquivoDf, n*sizeof(listaFuncionarios), SEEK_SET);
+    
+    
+    listaFuncionarios* novoElemento= (listaFuncionarios*)malloc(sizeof(listaFuncionarios));
+    strcpy(novoElemento->nome,entradaString("\nDigite o nome do Funcionario: "));
+    novoElemento->idade= entradaInt("\nDigite a idade do Funcioario: ");
+    strcpy(novoElemento->cpf,entradaCPF("\nDigite o CPF do funcionario: "));
+    novoElemento->matricula=n;
+    
+    
+    
+    fwrite(novoElemento,sizeof(listaFuncionarios),1, arquivoDf);
+    fflush(arquivoDf);
+    
+    //listaFuncionarios* novoElemento = (listaFuncionarios*)malloc(sizeof(listaFuncionarios));
+    //strcpy(novoElemento->nome,entradaString("\nDigite o nome do Funcionario: "));
+    //novoElemento->idade= entradaInt("\nDigite a idade do Funcioario: ");
+    //strcpy(novoElemento->cpf,entradaCPF("\nDigite o CPF do funcionario: "));
+    //
+    // Como acessar a matricula do funcionario que ocupa a posiçao anterior da lista? ( novoElemento->matricula= matriculaDoAnterior++;)
+    //
+    //novoElemento->prox=NULL;
+    
+    // listaFuncionarios* p;
+    //for( p = funcionarios; p->prox !=NULL; p=p->prox){
+    //  p->prox=novoElemento;
+    //}
+    //for(int n=1; EOF!=fscanf(arquivoDf, &testeFDL) ; fseek(arquivoDf, n* sizeof(listaFuncionarios), SEEK_SET) ){
+    // novoElemento->matricula=n;
+    //}
+    
+    
     fclose(arquivoDf);
     printf("\n Cadastro bem sucedido\nDigite qualquer tecla para continuar\n");
     scanf(" %c", &parada);
-
+    fflush(stdin);
+    
     
     
     return 1;
 }
 
 int consultaFuncionario(){
-    char parada;
-    printf("\n\n - - -Consulta de Funcionario- - -");
+    char parada, aux=1, testeFDL;
+    printf("\n\n\n-----------Consulta de Funcionarios-----------");
+    FILE *arquivoDf;
+    if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/df.txt", "a")) == NULL){
+        printf("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa");
+        scanf("%c", &parada);
+        fflush(stdin);
+        return 0;
+    }
+    listaFuncionarios* elementoTeste;
     int valor= entradaInt("\nDigite a matricula do funcionario que deseja buscar: ");
-    //if(funcionarios== NULL){
+    aux=fscanf(arquivoDf, "%c", & testeFDL);
+    if(aux== EOF){
         printf("\nNenhum Funcionario cadastrado. Cadastre funcionarios no menu principal opçao 1\nDigite qualquer tecla para continuar");
         scanf(" %c", &parada);
+        fflush(stdin);
         return 1;
-    //}else{
-        listaFuncionarios* p;
-     //   for(p=funcionarios; p!=NULL && p->matricula!=valor; p=p->prox);
-            if(p==NULL){
+    }
+    
+    
+    for(int n=1; valor == elementoTeste->matricula || aux!=EOF; n++, aux=fread(elementoTeste ,sizeof(listaFuncionarios),n, arquivoDf));
+    
+            if(elementoTeste==NULL){
                 printf("\nMatricula inexistente");
                 printf("\nDigite qualquer tecla para continuar\n");
                 scanf(" %c", &parada);
                 return 1;
             }else{
-                printf("\n Nome: %s", p->nome);
-                printf("\n Idade: %d", p->idade);
-                printf("\n CPF: %s", p->cpf);
-                printf("\n Matricula: %d", p->matricula);
-   //     }
+                printf("\n Nome: %s", elementoTeste->nome);
+                printf("\n Idade: %d", elementoTeste->idade);
+                printf("\n CPF: %s", elementoTeste->cpf);
+                printf("\n Matricula: %d", elementoTeste->matricula);
     }
 
-    printf("\n\n\n Consulta bem sucedida\nDigite qualquer tecla para continuar\n");
+    printf("\n\n\n Consulta bem sucedida\nDigite qualquer tecla para continuar: \n");
     scanf(" %c", &parada);
+    fflush(stdin);
     return 1;
 }

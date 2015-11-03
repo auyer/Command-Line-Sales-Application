@@ -13,17 +13,21 @@
 int entradaInt(char *titulo);
 // Parametros de entrada: String para Titulo de pedida para o usuario
 // Retorna um valor int
+//Autor: Rafael Passos
 
 float entradaFloat(char *titulo);
 // Parametros de entrada: String para Titulo de pedida para o usuario
 // Retorna um valor float de até 8 caracteres (000000,00)
+//Autor: Rafael Passos
 
 char *entradaString(char *titulo);
 // Parametros de entrada: String para Titulo de pedida para o usuario
 //Retorna Strig digitada pelo usuario de até 50 caracteres
+//Autor: Rafael Passos
 
 char *entradaCPF(char *titulo);
 // Parametros de entrada: String para Titulo de pedida para o usuario
 //Retorna Strig digitada pelo usuario de até 15 caracteres
+//Autor: Rafael Passos
 
 #endif /* EntradaSaida_h */
