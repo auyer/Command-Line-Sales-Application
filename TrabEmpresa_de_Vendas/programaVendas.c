@@ -94,7 +94,7 @@ int menu(){
         default:
             if ( escolha != 9){
                 printf("\nOpcao incorreta, escolha novamente");
-                printf("\n\n Digite qualquer tecla para continuar");
+                printf("\n\n Digite qualquer tecla para continuar: ");
                 scanf(" %c", &parada);
                 fflush(stdin);
                // getch();
@@ -107,20 +107,26 @@ int menu(){
 }
 
 int cadastroFuncionario(){
-    char parada, testeFDL, aux;
-    int n=1;
-    listaFuncionarios* elementoTeste;
+    char parada, testeFDL=1;
+    char aux=1;
+    int n=0;
+    listaFuncionarios* elementoTeste= (listaFuncionarios*)malloc(sizeof(listaFuncionarios));
     printf("\n\n\n-------------Cadastro de Funcionarios-------------");
     FILE *arquivoDf;
-    if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/df.txt", "a")) == NULL){
+    if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/df.bin", "a+b")) == NULL){
         printf("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa");
         scanf("%c", &parada);
         fflush(stdin);
         return 0;
     }
-    aux=fscanf(arquivoDf, "%c", & testeFDL);
     //aux=fscanf(arquivoDf, "%c", & testeFDL);
-    for(int n=1; aux!=EOF; n++, aux=fread(elementoTeste,sizeof(listaFuncionarios),n, arquivoDf));
+    //aux=fscanf(arquivoDf, "%c", & testeFDL);
+    //for(int n=1; aux!=EOF; n++, aux=fread(elementoTeste,sizeof(listaFuncionarios),n, arquivoDf));
+    do{
+       // aux=fscanf(arquivoDf, "%c", &testeFDL);
+        n++;
+        aux=fread(elementoTeste,sizeof(listaFuncionarios),1, arquivoDf);
+    }while(aux!=EOF);
     
     fflush(arquivoDf);
     fseek(arquivoDf, n*sizeof(listaFuncionarios), SEEK_SET);

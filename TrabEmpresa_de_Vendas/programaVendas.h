@@ -29,7 +29,7 @@ typedef struct cadMaterial
     int cod;
     int quantidade;
     float valor;
-    
+    int qntMinima;
     
 } listaMateriais;
 
