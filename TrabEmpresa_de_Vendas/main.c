@@ -15,6 +15,7 @@
 
 
 int main(int argc, const char * argv[]) {
+    
      typedef struct cadFuncionario
     {
         char nome[50];
@@ -23,7 +24,7 @@ int main(int argc, const char * argv[]) {
         int matricula;
         
         
-    } listaFuncionarios;
+    } listaFuncionarios; //Declaraçao do struct de funcionarios
     
     typedef struct cadMaterial
     {
@@ -33,12 +34,13 @@ int main(int argc, const char * argv[]) {
         float valor;
         int estqMinimo;
         
-        
-    } listaMateriais;
+    } listaMateriais;  //Declaraçao do struct de materiais
+    
     char parada;
-    FILE *arquivoDf;
-    if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/df.bin", "rb")) == NULL){
-        if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/df.bin", "wb"))    == NULL){
+    
+    FILE *arquivoDf; // Criaçao e/ou teste do arquivo de Funcionarios
+    if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/df.bin", "rb")) == NULL){ //teste de exitencia
+        if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/df.bin", "wb"))    == NULL){ //teste de erro na criaçao
             printf("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa");
             scanf("%c", &parada);
             fflush(stdin);
@@ -46,13 +48,17 @@ int main(int argc, const char * argv[]) {
     }
 }
     fclose(arquivoDf);
-    FILE *arquivoDm;
-    if((arquivoDm = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.txt", "a")) == NULL){
-        printf("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa");
-        scanf("%c", &parada);
-        fflush(stdin);
-        return 0;
+    
+    FILE *arquivoDm; // Criaçao e/ou teste do arquivo de Materiais
+    if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin", "rb")) == NULL){ //Teste de existencia
+        if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin", "wb"))    == NULL){ // Teste de erro na criaçao
+            printf("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa");
+            scanf("%c", &parada);
+            fflush(stdin);
+            return 0;
+        }
     }
+    
     fclose(arquivoDm);
 
 

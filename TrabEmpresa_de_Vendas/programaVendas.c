@@ -110,37 +110,48 @@ int cadastroFuncionario(){
     char parada, testeFDL=1;
     char aux=1;
     int n=0;
-    listaFuncionarios* elementoTeste= (listaFuncionarios*)malloc(sizeof(listaFuncionarios));
+    listaFuncionarios elementoTeste, novoElemento;
     printf("\n\n\n-------------Cadastro de Funcionarios-------------");
+    
     FILE *arquivoDf;
     if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/df.bin", "a+b")) == NULL){
         printf("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa");
         scanf("%c", &parada);
         fflush(stdin);
         return 0;
-    }
-    //aux=fscanf(arquivoDf, "%c", & testeFDL);
-    //aux=fscanf(arquivoDf, "%c", & testeFDL);
-    //for(int n=1; aux!=EOF; n++, aux=fread(elementoTeste,sizeof(listaFuncionarios),n, arquivoDf));
+    } //teste de erro na abertura do arquivo
+    
     do{
        // aux=fscanf(arquivoDf, "%c", &testeFDL);
         n++;
-        aux=fread(elementoTeste,sizeof(listaFuncionarios),1, arquivoDf);
+        aux=fread(&elementoTeste,sizeof(listaFuncionarios),1, arquivoDf); // Condiçao de parada nao funcionando
     }while(aux!=EOF);
+   
+  
+    /*
+     A funçao acima deveria ter a funçao de ver quantos structs 
+      estao gravados no arquivo, e gravar o proximo no final com
+      a matricula n+1 sendo n o numero de structs encontrados.
+     Mas a leitura do struct com a funçao :
+        fread(<#void *restrict#>, <#size_t#>, <#size_t#>, <#FILE *restrict#>)
+      nao está acontecendo como deveria, e nao conseguimos 
+      encontrar o EOF (fim de arquivo)
+     */
+    
     
     fflush(arquivoDf);
     fseek(arquivoDf, n*sizeof(listaFuncionarios), SEEK_SET);
     
     
-    listaFuncionarios* novoElemento= (listaFuncionarios*)malloc(sizeof(listaFuncionarios));
-    strcpy(novoElemento->nome,entradaString("\nDigite o nome do Funcionario: "));
-    novoElemento->idade= entradaInt("\nDigite a idade do Funcioario: ");
-    strcpy(novoElemento->cpf,entradaCPF("\nDigite o CPF do funcionario: "));
-    novoElemento->matricula=n;
+   
+    strcpy(novoElemento.nome,entradaString("\nDigite o nome do Funcionario: "));
+    novoElemento.idade= entradaInt("\nDigite a idade do Funcioario: ");
+    strcpy(novoElemento.cpf,entradaCPF("\nDigite o CPF do funcionario: "));
+    novoElemento.matricula=n;
     
     
     
-    fwrite(novoElemento,sizeof(listaFuncionarios),1, arquivoDf);
+    fwrite(&novoElemento,sizeof(listaFuncionarios),1, arquivoDf);
     fflush(arquivoDf);
     
     //listaFuncionarios* novoElemento = (listaFuncionarios*)malloc(sizeof(listaFuncionarios));
