@@ -31,6 +31,7 @@ int main(int argc, const char * argv[]) {
         int cod;
         int quantidade;
         float valor;
+        int qntMinima;
         struct cadMaterial* prox;
         
         
