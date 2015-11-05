@@ -68,7 +68,7 @@ int menu(){
             //consulta de funcionario
             break;
         case 3:
-            //return adastroMateriais();
+            return CadastroMateriais();
             //cadastra os materiais
             break;
         case 4:
@@ -211,3 +211,52 @@ int consultaFuncionario(){
     fflush(stdin);
     return 1;
 }
+int CadastroMateriais()
+{
+    listaMateriais listateste,listanovo;
+    int n=0;
+    char parada;
+
+    FILE *arquivomat;
+    printf("\n\n\n-------------Cadastro de Materiais-------------\n\n");
+    arquivomat = fopen("listamat.bin","a+b");
+    if(arquivomat == NULL)
+    {
+        printf("Arquivo nao pode ser aberto.\n");
+        printf("Ocorreu um erro grave! Use alguma tecla para finalizar:");
+        getc(stdin);
+    }
+    else
+    {
+
+        fseek(arquivomat,0*sizeof(listaMateriais),SEEK_SET);
+
+        do
+        {
+
+            n++;
+            fread(&listateste,sizeof(listaMateriais),1,arquivomat);
+
+        }
+        while(!feof(arquivomat));
+
+        fflush(arquivomat);
+
+        strcpy(listanovo.nome,entradaString("Digite o nome do material:\n"));
+        listanovo.quantidade = entradaInt("Digite a quantidade do material:\n");
+        listanovo.valor = entradaFloat("Digite o valor do material:\n");
+        listanovo.cod = printf("Codigo do material: %d",n);
+
+        fwrite(&listanovo,sizeof(listaMateriais),1,arquivomat);
+
+        fflush(arquivomat);
+        fclose(arquivomat);
+        printf("\n Cadastro bem sucedido\nDigite qualquer tecla para continuar\n");
+        scanf("%c", &parada);
+        fflush(stdin);
+        return 1;
+
+    }
+
+}
+
