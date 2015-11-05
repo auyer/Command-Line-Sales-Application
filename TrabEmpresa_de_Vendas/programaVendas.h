@@ -13,7 +13,7 @@
 
 #endif /* programaVendas_h */
 
-typedef struct cadFuncionario
+typedef struct
 {
     char nome[50];
     int idade;
@@ -23,7 +23,7 @@ typedef struct cadFuncionario
     
 } listaFuncionarios; // Declaraçao do tipo de estrutura usada para armazenar os Funcionarios
 
-typedef struct cadMaterial
+typedef struct
 {
     char nome[50];
     int cod;

@@ -30,4 +30,10 @@ char *entradaCPF(char *titulo);
 //Retorna Strig digitada pelo usuario de até 15 caracteres
 //Autor: Rafael Passos
 
+char entradaChar(char *titulo);
+// Parametros de entrada: String para Titulo de pedida para o usuario
+//Retorna um char digitado pelo usuario
+//Autor: Rafael Passos
+
+
 #endif /* EntradaSaida_h */

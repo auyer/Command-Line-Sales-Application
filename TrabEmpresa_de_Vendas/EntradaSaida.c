@@ -45,3 +45,10 @@ char *entradaCPF(char *titulo){
     scanf(" %15[^\n]",  frase);
     return frase;
 }
+
+char entradaChar(char *titulo){
+    char letra;
+    printf(" %s",titulo);
+    scanf(" %c", & letra);
+    return letra;
+}

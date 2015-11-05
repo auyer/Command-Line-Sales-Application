@@ -14,7 +14,7 @@
 
 
 void controle( ){
-    char loja[50], parada;
+    char loja[50];
     *loja= *entradaString("\nDigite o nome do estabelecimento: ");
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     //alternativa portavel ao system("cls");
@@ -33,15 +33,14 @@ void controle( ){
     printf("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - ");
     printf("\n Autores:\n  >> Rafael 'Auyer' Passos \n  >> Felipe 'Kurishiro' Ministerio\n  >> Pedro 'Kyrie' Hartmann");
     printf("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - ");
-    printf("\n\n Digite qualquer tecla para continuar: ");
     fflush(stdin);
-    scanf(" %c", &parada);
-    fflush(stdin); // Saida do programa
+    entradaChar("\n\n Digite qualquer tecla para continuar\n");
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    //Saida do programa
 }
 
 int menu(){
     int escolha;
-    char parada;
     printf("\n------------------------------------------------------");
     printf("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - ");
     printf("\n\n 1 - Cadastrar Novo Funcionario");
@@ -93,9 +92,8 @@ int menu(){
             break;
         default:
             if ( escolha != 9){
-                printf("\nOpcao incorreta, escolha novamente");
-                printf("\n\n Digite qualquer tecla para continuar: ");
-                scanf(" %c", &parada);
+                fflush(stdin);
+                entradaChar("\nOpcao incorreta, escolha novamente\n\n Digite qualquer tecla para continuar\n");
                 fflush(stdin);
                 return 1;
             }else{
@@ -106,27 +104,23 @@ int menu(){
 }
 
 int cadastroFuncionario(){
-    char parada;
     int n=0;
     listaFuncionarios elementoTeste, novoElemento;
     printf("\n\n\n-------------Cadastro de Funcionarios-------------");
     
     FILE *arquivoDf;
     if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/df.bin", "a+b")) == NULL){
-        printf("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa");
-        scanf("%c", &parada);
+        entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa ");
         fflush(stdin);
         return 0;
     } //teste de erro na abertura do arquivo
     fseek(arquivoDf, 0*sizeof(listaFuncionarios), SEEK_SET);
+    
     do{
         n++;
         fread(&elementoTeste,sizeof(listaFuncionarios),1, arquivoDf);
     }while(!feof(arquivoDf));
     // A variavel int n sairá com o valor da matricula, que é igual a N (numero de funcionarios cadastrados anteriormente) + 1
-   
-
-    
     
     fflush(arquivoDf);
     
@@ -144,25 +138,23 @@ int cadastroFuncionario(){
     
     
     fclose(arquivoDf);
-    printf("\n Cadastro bem sucedido\nDigite qualquer tecla para continuar\n");
-    scanf(" %c", &parada);
     fflush(stdin);
-    
+    entradaChar("\n Cadastro bem sucedido\nDigite qualquer tecla para continuar\n");
+    fflush(stdin);
     
     
     return 1;
 }
 
 int consultaFuncionario(){
-    char parada, aux;
+    char aux;
     int n=0;
     listaFuncionarios elementoTeste;
     printf("\n\n\n-----------Consulta de Funcionarios-----------");
     FILE *arquivoDf;
     if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/df.bin", "a+b")) == NULL){
-        printf("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa");
-        scanf("%c", &parada);
         fflush(stdin);
+        entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
         return 0; // Testa a abertura do arquivo
     }
     
@@ -178,10 +170,9 @@ int consultaFuncionario(){
     // busca a matricula desejada. Se encontrada, cairá no break, se nao, sairá pelo while com aux== EOF
     
             if(!(aux)){
-                printf("\nMatricula inexistente");
-                printf("\nDigite qualquer tecla para continuar\n");
                 fflush(stdin);
-                scanf(" %c", &parada);
+                entradaChar("\nMatricula inexistente\nDigite qualquer tecla para continuar\n");
+                fflush(stdin);
                 return 1;
             }else{
                 printf("\n Nome: %s", elementoTeste.nome);
@@ -190,10 +181,8 @@ int consultaFuncionario(){
                 printf("\n Matricula: %d", elementoTeste.matricula);
         }
     
-    
-
-    printf("\n\n\n Consulta bem sucedida\nDigite qualquer tecla para continuar: \n");
-    scanf(" %c", &parada);
+    fflush(stdin);
+    entradaChar("\n\n\n Consulta bem sucedida\nDigite qualquer tecla para continuar\n");
     fflush(stdin);
     return 1;
 }
