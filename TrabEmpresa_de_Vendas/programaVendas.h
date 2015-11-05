@@ -21,7 +21,7 @@ typedef struct cadFuncionario
     int matricula;
     
     
-} listaFuncionarios;
+} listaFuncionarios; // Declaraçao do tipo de estrutura usada para armazenar os Funcionarios
 
 typedef struct cadMaterial
 {
@@ -31,7 +31,7 @@ typedef struct cadMaterial
     float valor;
     int qntMinima;
     
-} listaMateriais;
+} listaMateriais; // Declaracao do tipo de estrutura usada para armazenar os Materiais
 
 void controle();
 //Abre o programa. Controla a abertura, reabertura e fechamento do menu.

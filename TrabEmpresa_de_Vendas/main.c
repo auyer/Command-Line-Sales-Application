@@ -16,25 +16,6 @@
 
 int main(int argc, const char * argv[]) {
     
-     typedef struct cadFuncionario
-    {
-        char nome[50];
-        int idade;
-        char cpf[15];
-        int matricula;
-        
-        
-    } listaFuncionarios; //Declaraçao do struct de funcionarios
-    
-    typedef struct cadMaterial
-    {
-        char nome[50];
-        int cod;
-        int quantidade;
-        float valor;
-        int estqMinimo;
-        
-    } listaMateriais;  //Declaraçao do struct de materiais
     
     char parada;
     
