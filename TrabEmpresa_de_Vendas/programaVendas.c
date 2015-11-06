@@ -77,7 +77,7 @@ int menu(){
             //consulta de materiais por codigo
             break;
         case 6:
-            //return consultaMaterialDesc();
+            return consultaMaterialDesc();
             //consulta de materiais por descricao
             break;
         case 7:
