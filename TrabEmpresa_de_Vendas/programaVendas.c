@@ -112,7 +112,9 @@ int menu(){
 int cadastroFuncionario(){
     int n=0;
     listaFuncionarios elementoTeste, novoElemento;
-    printf("\n\n\n-------------Cadastro de Funcionarios-------------");
+    printf("\n------------------------------------------------------\n");
+    printf("---------------Cadastro de Funcionarios---------------\n");
+    printf("------------------------------------------------------\n\n");
     
     FILE *arquivoDf;
     if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/df.bin", "a+b")) == NULL){
@@ -155,7 +157,9 @@ int cadastroFuncionario(){
 int consultaFuncionario(){
     char aux;
     listaFuncionarios elementoTeste;
-    printf("\n\n\n-----------Consulta de Funcionarios-----------");
+    printf("\n-------------------------------------------------------\n");
+    printf("---------------Consulta de Funcionarios---------------\n");
+    printf("-------------------------------------------------------\n\n");
     FILE *arquivoDf;
     if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/df.bin", "a+b")) == NULL){
         fflush(stdin);
@@ -191,46 +195,6 @@ int consultaFuncionario(){
     return 1;
 }
 
-int consultaMaterialDesc(){
-    char aux;
-    int n=0;
-    listaMateriais elementoTeste;
-    printf("\n\n\n-----------Consulta de Materiais-----------");
-    FILE *arquivoDm;
-    if((arquivoDm = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin", "a+b")) == NULL){
-        fflush(stdin);
-        entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
-        return 0;
-    }
-    
-    char *valor= entradaString("\nDigite a descricao que deseja pesquisar: ");
-    
-    fseek(arquivoDm, 0*sizeof(listaMateriais), SEEK_SET);
-    do{
-        n++;
-        aux=fread(&elementoTeste,sizeof(listaMateriais),1, arquivoDm);
-        if(0==strcmp(elementoTeste.nome,valor))
-            break;
-    }while(!feof(arquivoDm));
-    if(!(aux)){
-        fflush(stdin);
-        entradaChar("\nNenhum material encontrado com essa descricao\nDigite qualquer tecla para continuar\n");
-        fflush(stdin);
-        return 1;
-    }else{
-        printf("\n Codigo do produto: %d", elementoTeste.cod);
-        printf("\n Nome do Produto: %s", elementoTeste.nome);
-        printf("\n Quantidade em Estoque: %d", elementoTeste.quantidade);
-        printf("\n Preco por Unidade: %f.2", elementoTeste.valor);
-        printf("\n Estoque Minimo: %d", elementoTeste.qntMinima);
-    }
-    
-    fflush(stdin);
-    entradaChar("\n\n\n Consulta bem sucedida\nDigite qualquer tecla para continuar\n");
-    fflush(stdin);
-    return 1;
-}
-
 int cadastroMateriais(){
     
     listaMateriais listateste,listanovo;
@@ -238,7 +202,9 @@ int cadastroMateriais(){
     char parada;
     
     FILE *arquivomat;
-    printf("\n\n\n-------------Cadastro de Materiais-------------\n\n");
+    printf("\n-------------------------------------------------------\n");
+    printf("-----------------Cadastro de Materiais-----------------\n");
+    printf("-------------------------------------------------------\n\n");
     arquivomat = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin","a+b");
     if(arquivomat == NULL)
     {
@@ -288,8 +254,9 @@ int alteracaoMaterial(){
     char aux;
     listaMateriais listateste;
     FILE *arquivoMat;
-    
-    printf("\n\n\n-------------Alterar dados de material-------------\n\n");
+    printf("\n-------------------------------------------------------\n");
+    printf("---------------Alterar dados de material---------------\n");
+    printf("-------------------------------------------------------\n\n");
     
     arquivoMat = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin","a+b");
     
@@ -328,4 +295,88 @@ int alteracaoMaterial(){
         return 1;
     }
 }
+
+
+
+/*
+ 
+ 
+ 
+ Inserir Consulta Material Codigo
+ 
+ 
+ 
+ 
+ */
+
+
+
+
+int consultaMaterialDesc(){
+    char aux;
+    int n=0;
+    listaMateriais elementoTeste;
+    printf("\n------------------------------------------------------\n");
+    printf("----------------Consulta de Materiais----------------\n");
+    printf("------------------------------------------------------\n\n");
+    FILE *arquivoDm;
+    if((arquivoDm = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin", "a+b")) == NULL){
+        fflush(stdin);
+        entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
+        return 0;
+    }
+    
+    char *valor= entradaString("\nDigite a descricao que deseja pesquisar: ");
+    
+    fseek(arquivoDm, 0*sizeof(listaMateriais), SEEK_SET);
+    do{
+        n++;
+        aux=fread(&elementoTeste,sizeof(listaMateriais),1, arquivoDm);
+        if(0==strcmp(elementoTeste.nome,valor))
+            break;
+    }while(!feof(arquivoDm));
+    if(!(aux)){
+        fflush(stdin);
+        entradaChar("\nNenhum material encontrado com essa descricao\nDigite qualquer tecla para continuar\n");
+        fflush(stdin);
+        return 1;
+    }else{
+        printf("\n Codigo do produto: %d", elementoTeste.cod);
+        printf("\n Nome do Produto: %s", elementoTeste.nome);
+        printf("\n Quantidade em Estoque: %d", elementoTeste.quantidade);
+        printf("\n Preco por Unidade: %f.2", elementoTeste.valor);
+        printf("\n Estoque Minimo: %d", elementoTeste.qntMinima);
+    }
+    
+    fflush(stdin);
+    entradaChar("\n\n\n Consulta bem sucedida\nDigite qualquer tecla para continuar\n");
+    fflush(stdin);
+    return 1;
+}
+
+/*
+ 
+ 
+ 
+  Inserir Funçao geraçao de nota fiscal
+ 
+ 
+ 
+ 
+ 
+ */
+
+
+
+
+/*
+ 
+ 
+ 
+ 
+ Inserir função de estoque minimo
+ 
+ 
+ 
+ */
 
