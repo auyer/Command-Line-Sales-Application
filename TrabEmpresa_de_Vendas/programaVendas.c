@@ -186,3 +186,43 @@ int consultaFuncionario(){
     fflush(stdin);
     return 1;
 }
+
+int consultaMaterialDesc(){
+    char aux;
+    int n=0;
+    listaMaterial elementoTeste;
+    printf("\n\n\n-----------Consulta de Materiais-----------");
+    FILE *arquivoDm;
+    if((arquivoDm = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin", "a+b")) == NULL){
+        fflush(stdin);
+        entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
+        return 0;
+    }
+
+    int valor= entradaInt("\nDigite a descricao que deseja pesquisar: ");
+
+    fseek(arquivoDm, 0*sizeof(listaMateriais), SEEK_SET);
+    do{
+        n++;
+        aux=fread(&elementoTeste,sizeof(listaMateriais),1, arquivoDm);
+        if(elementoTeste.nome==valor)
+            break;
+    }while(!feof(arquivoDm));
+            if(!(aux)){
+                fflush(stdin);
+                entradaChar("\nNenhum material encontrado com essa descricao\nDigite qualquer tecla para continuar\n");
+                fflush(stdin);
+                return 1;
+            }else{
+                printf("\n Codigo do produto: %s", elementoTeste.cod);
+                printf("\n Nome do Produto: %d", elementoTeste.nome);
+                printf("\n Quantidade em Estoque: %s", elementoTeste.quantidade);
+                printf("\n Preco por Unidade: %d", elementoTeste.preco);
+                printf("\n Estoque Minimo: %d", elementoTeste.qntMinima);
+        }
+
+    fflush(stdin);
+    entradaChar("\n\n\n Consulta bem sucedida\nDigite qualquer tecla para continuar\n");
+    fflush(stdin);
+    return 1;
+}
