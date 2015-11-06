@@ -14,10 +14,6 @@
 
 
 void controle( ){
-    char loja[50];
-    *loja= *entradaString("\nDigite o nome do estabelecimento: ");
-    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    //alternativa portavel ao system("cls");
     int x;
     do{
         printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
@@ -41,7 +37,9 @@ void controle( ){
 
 int menu(){
     int escolha;
-    printf("\n------------------------------------------------------");
+    printf("\n-------------------------------------------------------");
+    printf("\n-------------------- Store Manager --------------------");
+    printf("\n-------------------------------------------------------");
     printf("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - ");
     printf("\n\n 1 - Cadastrar Novo Funcionario");
     printf("\n\n 2 - Consultar Funcionarios");
@@ -52,7 +50,7 @@ int menu(){
     printf("\n\n 7 - Controle de vendas");
     printf("\n\n 8 - Listar Materiais Abaixo do Estoque");
     printf("\n\n 9 - Sair");
-    printf("\n\n\n-----------------Digite Sua Opcao-----------------");
+    printf("\n\n\n-----------------Digite Sua Opcao------------------");
     printf("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
 
 
@@ -148,7 +146,6 @@ int cadastroFuncionario(){
 
 int consultaFuncionario(){
     char aux;
-    int n=0;
     listaFuncionarios elementoTeste;
     printf("\n\n\n-----------Consulta de Funcionarios-----------");
     FILE *arquivoDf;
@@ -162,7 +159,6 @@ int consultaFuncionario(){
     
     fseek(arquivoDf, 0*sizeof(listaFuncionarios), SEEK_SET);
     do{
-        n++;
         aux=fread(&elementoTeste,sizeof(listaFuncionarios),1, arquivoDf);
         if(elementoTeste.matricula==valor)
             break;
