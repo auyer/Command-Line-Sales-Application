@@ -22,7 +22,8 @@ float entradaFloat(char *titulo);
 
 char *entradaString(char *titulo);
 // Parametros de entrada: String para Titulo de pedida para o usuario
-//Retorna Strig digitada pelo usuario de até 50 caracteres
+//Retorna Strig TODA MAIUSCULA digitada pelo usuario ( o usuario nao
+//precisa digitar maiuscolo, a funçao faz isso.) de até 50 caracteres
 //Autor: Rafael Passos
 
 char *entradaCPF(char *titulo);

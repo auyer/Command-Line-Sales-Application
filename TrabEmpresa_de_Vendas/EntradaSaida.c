@@ -9,6 +9,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 int entradaInt(char titulo[]){
     int valor;
@@ -32,10 +33,15 @@ float entradaFloat(char titulo[]){
 }
 
 char *entradaString(char *titulo){
-        char *frase = (char*) malloc ((sizeof(char) * sizeof(frase)));
-        printf("%s",titulo);
-        scanf(" %50[^\n]",  frase);
-        return frase;
+    int i;
+    char *frase = (char*) malloc ((sizeof(char) * sizeof(frase)));
+    printf("%s",titulo);
+    scanf(" %50[^\n]",  frase);
+    while(frase[i]){
+        frase[i]= (toupper(frase[i]));
+        i++;
+    }
+    return frase;
     
     return frase;
 }

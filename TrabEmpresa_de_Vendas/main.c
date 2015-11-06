@@ -22,8 +22,8 @@ int main(int argc, const char * argv[]) {
             entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
             fflush(stdin);
             return 0;
+        }
     }
-}
     fclose(arquivoDf);
     
     FILE *arquivoDm; // Criaçao e/ou teste do arquivo de Materiais
@@ -36,8 +36,8 @@ int main(int argc, const char * argv[]) {
     }
     
     fclose(arquivoDm);
-
-
+    
+    
     controle();
     return 0;
 }
