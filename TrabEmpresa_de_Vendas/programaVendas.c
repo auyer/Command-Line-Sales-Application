@@ -187,7 +187,7 @@ int consultaFuncionario(){
     return 1;
 }
 
-int consultaMaterial(){
+int consultaMaterialDesc(){
     char aux;
     int n=0;
     listaMaterial elementoTeste;
