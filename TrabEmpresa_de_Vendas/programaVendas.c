@@ -186,7 +186,7 @@ int consultaFuncionario(){
 int consultaMaterialDesc(){
     char aux;
     int n=0;
-    listaMaterial elementoTeste;
+    listaMateriais elementoTeste;
     printf("\n\n\n-----------Consulta de Materiais-----------");
     FILE *arquivoDm;
     if((arquivoDm = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin", "a+b")) == NULL){
@@ -195,13 +195,13 @@ int consultaMaterialDesc(){
         return 0;
     }
 
-    int valor= entradaInt("\nDigite a descricao que deseja pesquisar: ");
+    char *valor= entradaString("\nDigite a descricao que deseja pesquisar: ");
 
     fseek(arquivoDm, 0*sizeof(listaMateriais), SEEK_SET);
     do{
         n++;
         aux=fread(&elementoTeste,sizeof(listaMateriais),1, arquivoDm);
-        if(elementoTeste.nome==valor)
+        if(strcmp(elementoTeste.nome,valor))
             break;
     }while(!feof(arquivoDm));
             if(!(aux)){
@@ -210,10 +210,10 @@ int consultaMaterialDesc(){
                 fflush(stdin);
                 return 1;
             }else{
-                printf("\n Codigo do produto: %s", elementoTeste.cod);
-                printf("\n Nome do Produto: %d", elementoTeste.nome);
-                printf("\n Quantidade em Estoque: %s", elementoTeste.quantidade);
-                printf("\n Preco por Unidade: %d", elementoTeste.preco);
+                printf("\n Codigo do produto: %d", elementoTeste.cod);
+                printf("\n Nome do Produto: %s", elementoTeste.nome);
+                printf("\n Quantidade em Estoque: %d", elementoTeste.quantidade);
+                printf("\n Preco por Unidade: %f", elementoTeste.valor);
                 printf("\n Estoque Minimo: %d", elementoTeste.qntMinima);
         }
 
