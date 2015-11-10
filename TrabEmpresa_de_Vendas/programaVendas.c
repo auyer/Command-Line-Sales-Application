@@ -93,7 +93,7 @@ int menu(){
             break;
         case 8:
             printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-            // return estoqueAbaixoMinimo();
+            return estoqueAbaixoMinimo();
             //lista de produtos abaixo do estoque
             break;
         default:
@@ -248,6 +248,8 @@ int cadastroMateriais(){
     
 }
 
+
+
 /*
  
  
@@ -349,7 +351,7 @@ int consultaMaterialDesc(){
 
 int controleVendas()
 {
-
+    
     char aux;
     int n=0, valor=0;
     listaFuncionarios auxFunc;
@@ -360,7 +362,7 @@ int controleVendas()
         entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
         return 0; // Testa a abertura do arquivo
     }
-
+    
     fseek(arquivoDf, 0*sizeof(listaFuncionarios), SEEK_SET);
     printf("\n-------------Geraçao de nota fiscal---------------\n\n");
     valor= entradaInt("\nDigite a matricula do vendedor:  ");
@@ -384,20 +386,19 @@ int controleVendas()
     char prov;
     int quebra, i, j=0, quant[100];
     listaMateriais auxMat[100];
-
+    
     printf("\n\n------------------------------------------------------\n");
     printf("----------------Materiais Vendidos:------------------\n");
     printf("------------------------------------------------------\n\n");
-    listaMateriais elementoTeste;
     int contArquivo=0;
     FILE *arquivoDm;
-    if((arquivoDm = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin", "a+b")) == NULL)
+    if((arquivoDm = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin", "r+b")) == NULL)
     {
         fflush(stdin);
         entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
         return 0;//teste de abertura de arquivo
     }
-
+    
     
     for (i=0; i<100; i++) // laço para a criação da lista de materiais vendidos.
     {
@@ -427,44 +428,37 @@ int controleVendas()
                 
                 i--;
             }else{
-                fseek(arquivoDf, 0*sizeof(listaMateriais), SEEK_SET);
-                do{
-                    contArquivo++;
-                    aux=fread(&elementoTeste,sizeof(listaMateriais),1, arquivoDm);
-                    if( elementoTeste.cod == codigo){
-                        elementoTeste.quantidade -=quant[i];
-                        fseek(arquivoDf, contArquivo*sizeof(listaMateriais), SEEK_SET);
-                        fwrite(&elementoTeste, sizeof(listaMateriais), 1, arquivoDm);
-                        // Aletrar no Arquivo
-                        break;
-                    }
-                }while(!feof(arquivoDm));
+                fseek(arquivoDf, -1*sizeof(listaMateriais), SEEK_CUR);
+                contArquivo++;
+                auxMat[i].quantidade -=quant[i];
+                fwrite(&auxMat[i], sizeof(listaMateriais), 1, arquivoDm);
             }
         }
         quebra = entradaInt("\n\n\nDeseja adicionar mais um material? Digite 1 para sim ou 0 para não: \n");
         if (quebra == 0)
         {
             quant[i+1] = 0;// Quebra este laço e serve para quebrar um laço mais a frente na impressão da nota fiscal.
-            break; 
+            break;
         }
     }
-
+    
     float total[100], totalCompra;
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    printf("\n------------------------------------------------------\n");
-    printf("---------------------Nota Fiscal-----------------------\n");
-    printf("\n|Vendedor: %s - Matricula : %d\n\n", auxFunc.nome, auxFunc.matricula);
+    printf("\n|-------------------------------------------------------\n");
+    printf("|---------------------Nota Fiscal-----------------------\n|");
+    printf("\n| Vendedor: %s - Matricula : %d\n|\n|", auxFunc.nome, auxFunc.matricula);
     for(i=0; i<100; i++){
         if (quant[i] != 0){
-        total[i] = auxMat[i].valor * quant[i];
-        printf("|%d- %s  - cod %d \n|  -     %d UN X R$%.2f -              T  R$%.2f\n", i+1, auxMat[i].nome, auxMat[i].cod, quant[i], auxMat[i].valor, total[i]);
-        totalCompra +=total[i]; //adição do valor total da compra
+            total[i] = auxMat[i].valor * quant[i];
+            printf(" %d- %s  - cod %d \n|", i+1, auxMat[i].nome, auxMat[i].cod);
+            printf("  -     %d UN X R$%.2f                    T  R$%.2f\n|\n|" ,quant[i], auxMat[i].valor, total[i]);
+            totalCompra +=total[i]; //adição do valor total da compra
         }else{
-        break; //quebra o laço de impressão caso quant[i] seja igual a zero.
+            break; //quebra o laço de impressão caso quant[i] seja igual a zero.
         }
     }
-    printf("\n\n|Total da Compra:                R$%.2f\n", totalCompra);
-    printf("\n------------------------------------------------------\n");
+    printf("\n|\n|Total da Compra:                              R$%.2f\n|", totalCompra);
+    printf("\n|-------------------------------------------------------\n");
     fclose(arquivoDm);
     fflush(stdin);
     entradaChar("\n\n\n Agradecemos pela compra em nossa loja!\nDigite qualquer tecla para continuar\n");
@@ -474,32 +468,30 @@ int controleVendas()
 
 int estoqueAbaixoMinimo()
 {
-    char aux;
     listaMateriais matAtual;
     printf("\n------------------------------------------------------\n");
     printf("----------------Verificação de Estoque-----------------\n");
     printf("------------------------------------------------------\n\n");
     FILE *arquivoDm;
-    if((arquivoDm = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin", "w+b")) == NULL)
+    if((arquivoDm = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin", "rb")) == NULL)
     {
         fflush(stdin);
         entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
         return 0;
     }//Testa a abertura do arquivo.
-
-    int cont = entradaInt("\n Deseja fazer a consulta dos materiais abaixo do estoque minimo? Digite 1 para sim e 0 para não: \n");
-    // prompt de entrada na função
-    if (cont == 1)
+    
+    
+    fseek(arquivoDm, 0*sizeof(listaMateriais), SEEK_SET); //vai para o inicio do arquivo
+    do
     {
-        fseek(arquivoDm, 0*sizeof(listaMateriais), SEEK_SET); //vai para o inicio do arquivo
-        do
-        {
-            aux=fread(&matAtual,sizeof(listaMateriais),1, arquivoDm);
-            if (matAtual.quantidade < matAtual.qntMinima)
-                printf("\n%s abaixo do estoque minimo. Quantidade atual: %d - Quantidade minima: %d", matAtual.nome, matAtual.quantidade, matAtual.qntMinima);
-        }
-        while(!feof(arquivoDm));
-    }//Verifica os materias cadastrados e se eles estão abaixo do estoque minimo, imprimindo as equivalencias
+        matAtual.qntMinima=1;
+        matAtual.quantidade=2;
+        fread(&matAtual,sizeof(listaMateriais),1, arquivoDm);
+        if (matAtual.quantidade < matAtual.qntMinima)
+            printf("\n|\n|%s abaixo do estoque minimo.\n|  |Quantidade atual: %d - Quantidade minima: %d", matAtual.nome, matAtual.quantidade, matAtual.qntMinima);
+    }
+    while(!feof(arquivoDm));
+    //Verifica os materias cadastrados e se eles estão abaixo do estoque minimo, imprimindo as equivalencias
     fclose(arquivoDm);
     fflush(stdin);
     entradaChar("\n\n\n Consulta bem sucedida\nDigite qualquer tecla para continuar\n");
