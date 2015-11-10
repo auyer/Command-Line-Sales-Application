@@ -424,6 +424,11 @@ int controleVendas()
         else
         {
             quant[i] = entradaInt ("\n Entre com a quantidade do produto vendido:"); 
+            if (quant[i]>auxMat[i].quantidade)
+            {
+                printf("Nao ha a quantidade pedida em estoque, quantidade em estoque: %d", auxMat[i].quantidade);
+                i--;
+            }
         }
         quebra = entradaInt("\nDeseja adicionar mais um material? Digite 1 para sim ou 0 para não: \n");
         if (quebra == 0)
@@ -455,17 +460,38 @@ int controleVendas()
     return 1;
 }
 
+int estoqueAbaixoMinimo()
+{
+    char aux;
+    int n=0;
+    listaMateriais matAtual;
+    printf("\n------------------------------------------------------\n");
+    printf("----------------Verificação de Estoque-----------------\n");
+    printf("------------------------------------------------------\n\n");
+    FILE *arquivoDm;
+    if((arquivoDm = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin", "a+b")) == NULL)
+    {
+        fflush(stdin);
+        entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
+        return 0;
+    }//Testa a abertura do arquivo.
 
+    int cont = entradaInt("\n Deseja fazer a consulta dos materiais abaixo do estoque minimo? Digite 1 para sim e 0 para não: \n");
+    // prompt de entrada na função
+    if (cont == 1)
+    {
+        fseek(arquivoDm, 0*sizeof(listaMateriais), SEEK_SET); //vai para o inicio do arquivo
+        do
+        {
+            aux=fread(&matAtual,sizeof(listaMateriais),1, arquivoDm);
+            if (matAtual.quantidade < matAtual.qntMinima)
+                printf("\n%s abaixo do estoque minimo. Quantidade atual: %d - Quantidade minima: %d", matAtual.nome, matAtual.quantidade, matAtual.qntMinima);
+        }
+        while(!feof(arquivoDm));
+    }//Verifica os materias cadastrados e se eles estão abaixo do estoque minimo, imprimindo as equivalencias
 
-
-/*
- 
- 
- 
- 
- Inserir função de estoque minimo
- 
- 
- 
- */
-
+    fflush(stdin);
+    entradaChar("\n\n\n Consulta bem sucedida\nDigite qualquer tecla para continuar\n");
+    fflush(stdin);
+    return 1;
+}// prompt de final de programa.
