@@ -354,17 +354,107 @@ int consultaMaterialDesc(){
     return 1;
 }
 
-/*
- 
- 
- 
-  Inserir Funçao geraçao de nota fiscal
- 
- 
- 
- 
- 
- */
+Int controleVendas()
+{
+
+    char aux;
+    int n=0, valor=0;
+    listaFuncionarios auxFunc;
+    FILE *arquivoDf;
+    if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/df.bin", "a+b")) == NULL)
+    {
+        fflush(stdin);
+        entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
+        return 0; // Testa a abertura do arquivo
+    }
+
+    fseek(arquivoDf, 0*sizeof(listaFuncionarios), SEEK_SET);
+
+    do
+    {
+        valor= entradaInt("\nDigite a matricula do funcionario que deseja buscar: ");
+
+        n++;
+        aux=fread(&auxFunc,sizeof(listaFuncionarios),1, arquivoDf);
+        if(auxFunc.matricula==valor)
+            break;
+    }
+    while(!feof(arquivoDf));
+    if(!(aux))
+    {
+        fflush(stdin);
+        entradaChar("\nMatricula inexistente\n");
+        fflush(stdin);
+    }
+    // Procura pelo funcionario usando a função de pesquisa funcionario adaptada e a armazena para uso futuro.
+
+    char prov, desc;
+    int quebra, i, j=0, quant[100];
+    listaMateriais auxMat[100];
+
+    printf("\n------------------------------------------------------\n");
+    printf("-----------------Materiais Vendidos:-------------------\n");
+    printf("------------------------------------------------------\n\n");
+    FILE *arquivoDm;
+    if((arquivoDm = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin", "a+b")) == NULL)
+    {
+        fflush(stdin);
+        entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
+        return 0;//teste de abertura de arquivo
+    }
+
+    fseek(arquivoDm, 0*sizeof(listaMateriais), SEEK_SET);
+    for (i=0, i<100, i++) // laço para a criação da lista de materiais vendidos.
+    {
+        do
+        {
+            char *desc= entradaString("\nDigite a descricao do material vendido: ");
+            j++;
+            prov=fread(&auxMat[i],sizeof(listaMateriais),1, arquivoDm);
+            if(0==strcmp(auxMat[i].nome,desc))
+                break;
+        }
+        while(!feof(arquivoDm));
+        if(!(prov))
+        {
+            fflush(stdin);
+            entradaChar("\nNenhum material encontrado com essa descricao\nDigite qualquer tecla para continuar\n");
+            fflush(stdin);// mensagem de erro que não finaliza o laço.
+        }
+        else
+        {
+            quant[i] = entradaInt ("\n Entre com a quantidade do produto vendido:"); 
+        }
+        quebra = entradaInt("\nDeseja adicionar mais um material? Digite 1 para sim ou 0 para não: \n")
+        if (quebra = 0)
+        {
+            quant[i+1] = 0;// Quebra este laço e serve para quebrar um laço mais a frente na impressão da nota fiscal.
+            break; 
+        }
+    }
+
+    float total[100], totalCompra;
+    clrscr();
+    printf("\n------------------------------------------------------\n");
+    printf("---------------------Nota Fiscal-----------------------\n");
+    printf("------------------------------------------------------\n\n");
+    printf("\nFuncionario que realizou a venda: %s\n", auxFunc.nome);
+    for(i=0, i<100, i++){
+        if (quant[i] != 0){
+        total[i] = auxMat[i].valor * quant[i];
+        printf("%d - %s - %d - %d - %f\n", i, auxMat[i].nome, auxMat[i].valor, quant[i], total[i]);
+        totalCompra +=total[i]; //adição do valor total da compra
+        }else{
+        break; //quebra o laço de impressão caso quant[i] seja igual a zero.
+        }
+    }
+    printf("\nTotal da Compra: %f\n", totalCompra);
+
+    fflush(stdin);
+    entradaChar("\n\n\n Agradecemos pela compra em nossa loja!\nDigite qualquer tecla para continuar\n");
+    fflush(stdin);
+    return 1;
+}
 
 
 
