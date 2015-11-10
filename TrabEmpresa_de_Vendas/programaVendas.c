@@ -429,7 +429,6 @@ int controleVendas()
                 i--;
             }else{
                 fseek(arquivoDf, -1*sizeof(listaMateriais), SEEK_CUR);
-                contArquivo++;
                 auxMat[i].quantidade -=quant[i];
                 fwrite(&auxMat[i], sizeof(listaMateriais), 1, arquivoDm);
             }
@@ -498,6 +497,7 @@ int estoqueAbaixoMinimo()
     fflush(stdin);
     return 1;
 }// prompt de final de programa.
+
 int alteracaoMaterial(){
 
 listaMateriais posicao,listanovo;
