@@ -27,7 +27,7 @@ void controle( ){
     printf("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - ");
     printf("\n- - - - -Obrigado por usar nosso programa! - - -  - - ");
     printf("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - ");
-    printf("\n Autores:\n  >> Rafael 'Auyer' Passos \n  >> Felipe 'Kurishiro' Ministerio\n  >> Pedro 'Kyrie' Hartmann");
+    printf("\n Autores:\n  >> Rafael Passos \n  >> Felipe Ministerio\n  >> Pedro Hartmann");
     printf("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - ");
     fflush(stdin);
     entradaChar("\n\n Digite qualquer tecla para continuar\n");
@@ -38,20 +38,21 @@ void controle( ){
 int menu(){
     int escolha;
     printf("\n-------------------------------------------------------");
-    printf("\n-------------------- Store Manager --------------------");
+    printf("\n-------------------- Menu Principal -------------------");
     printf("\n-------------------------------------------------------");
-    printf("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - ");
+    printf("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
     printf("\n\n 1 - Cadastrar Novo Funcionario");
     printf("\n\n 2 - Consultar Funcionarios");
     printf("\n\n 3 - Cadastrar Produtos");
     printf("\n\n 4 - Alterar Dados de Produtos");
-    printf("\n\n 5 - Consultar materiais por código");
-    printf("\n\n 6 - Consultar materiais por Descriçao");
+    printf("\n\n 5 - Consultar produtos por código");
+    printf("\n\n 6 - Consultar produtos por Descriçao");
     printf("\n\n 7 - Controle de vendas");
-    printf("\n\n 8 - Listar Materiais Abaixo do Estoque");
+    printf("\n\n 8 - Listar Produtos Abaixo do Estoque");
     printf("\n\n 9 - Sair");
-    printf("\n\n\n-----------------Digite Sua Opcao------------------");
-    printf("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
+    printf("\n\n\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
+    printf("\n-------------------Digite Sua Opcao--------------------");
+    printf("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
     
     
     escolha=entradaInt("\n\nDigite Sua Opçao: ");
@@ -73,7 +74,7 @@ int menu(){
             break;
         case 4:
             printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-            //return alteracaoMaterial();
+            return alteracaoMaterial();
             //alteracao de materiais
             break;
         case 5:
@@ -134,9 +135,10 @@ int cadastroFuncionario(){
     
     
     
-    strcpy(novoElemento.nome,entradaString("\nDigite o nome do Funcionario: "));
-    novoElemento.idade= entradaInt("\nDigite a idade do Funcioario: ");
-    strcpy(novoElemento.cpf,entradaCPF("\nDigite o CPF do funcionario: "));
+    strcpy(novoElemento.nome,entradaString("\n\nDigite o nome do Funcionario: "));
+    novoElemento.idade= entradaInt("\n\nDigite a idade do Funcioario: ");
+    strcpy(novoElemento.cpf,entradaCPF("\n\nDigite o CPF do funcionario: "));
+    printf("\n\nMatricula do funcionario: %d", n);
     novoElemento.matricula=n;
     
     
@@ -147,7 +149,7 @@ int cadastroFuncionario(){
     
     fclose(arquivoDf);
     fflush(stdin);
-    entradaChar("\n Cadastro bem sucedido\nDigite qualquer tecla para continuar\n");
+    entradaChar("\n\nCadastro bem sucedido\nDigite qualquer tecla para continuar\n");
     fflush(stdin);
     
     
@@ -158,7 +160,7 @@ int consultaFuncionario(){
     char aux;
     listaFuncionarios elementoTeste;
     printf("\n-------------------------------------------------------\n");
-    printf("---------------Consulta de Funcionarios---------------\n");
+    printf("----------------Consulta de Funcionarios---------------\n");
     printf("-------------------------------------------------------\n\n");
     FILE *arquivoDf;
     if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/df.bin", "a+b")) == NULL){
@@ -202,24 +204,20 @@ int cadastroMateriais(){
     
     FILE *arquivomat;
     printf("\n-------------------------------------------------------\n");
-    printf("-----------------Cadastro de Materiais-----------------\n");
+    printf("------------------Cadastro de Produtos-----------------\n");
     printf("-------------------------------------------------------\n\n");
     arquivomat = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin","a+b");
     if(arquivomat == NULL)
     {
-        printf("Arquivo nao pode ser aberto.\n");
-        printf("Ocorreu um erro grave! Use alguma tecla para finalizar:");
-        getc(stdin);
+        entradaChar("\nArquivo nao pode ser aberto.\n\nDigite Qualquer tecla para Finalizar");
         return 0;
     }
     else
     {
-        
         fseek(arquivomat,0*sizeof(listaMateriais),SEEK_SET);
         
         do
         {
-            
             n++;
             fread(&listateste,sizeof(listaMateriais),1,arquivomat);
             
@@ -228,19 +226,18 @@ int cadastroMateriais(){
         
         fflush(arquivomat);
         
-        strcpy(listanovo.nome,entradaString("Digite o nome do material: "));
-        listanovo.quantidade = entradaInt("Digite a quantidade do material: ");
-        listanovo.valor = entradaFloat("Digite o valor do material:");
+        strcpy(listanovo.nome,entradaString("\n\nDigite o nome do material: "));
+        listanovo.quantidade = entradaInt("\n\nDigite a quantidade do material: ");
+        listanovo.valor = entradaFloat("\n\nDigite o valor do material:");
         listanovo.cod =n;
-        listanovo.qntMinima = entradaInt("Digite a quantidade minima de estoque: ");
-        printf("O codigo do produto: %d",n);
-        
+        listanovo.qntMinima = entradaInt("\n\nDigite a quantidade minima de estoque: ");
+        printf("\n\nCodigo do produto: %d",n);
         
         fwrite(&listanovo,sizeof(listaMateriais),1,arquivomat);
         
         fflush(arquivomat);
         fclose(arquivomat);
-        entradaChar("\n Cadastro bem sucedido\nDigite qualquer tecla para continuar\n");
+        entradaChar("\n\nCadastro bem sucedido\nDigite qualquer tecla para continuar\n");
         fflush(stdin);
         return 1;
         
@@ -249,24 +246,79 @@ int cadastroMateriais(){
 }
 
 
-
-/*
- 
- 
- 
- Inserir Alterar Material
- 
- 
- 
- 
- */
+int alteracaoMaterial(){
+    
+    listaMateriais posicao;
+    char aux,option;
+    FILE *arquivoMat;
+    int codigo,alt;
+    printf("\n------------------------------------------------------\n");
+    printf("---------------Alterar Dados De Produto---------------\n");
+    printf("------------------------------------------------------\n\n");
+    arquivoMat = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin","r+b");
+    
+    if(arquivoMat == NULL){
+        entradaChar("\nOcorreu um erro grave! Use alguma tecla para finalizar:");
+        fflush(stdin);
+        return 0;
+    }else{
+        fseek(arquivoMat,0*sizeof(listaMateriais),SEEK_SET);
+        codigo = entradaInt("\n\nDigite o codigo do Material para alterar: ");
+        do{
+            aux = fread(&posicao,sizeof(listaMateriais),1,arquivoMat);
+            if(posicao.cod == codigo){
+                fseek(arquivoMat,-1*sizeof(listaMateriais),SEEK_CUR);
+                break;
+            }
+        }while(!feof(arquivoMat));
+        if(!(aux)){
+            entradaChar("\n\nCodigo inexistente\nDigite qualquer tecla para continuar\n");
+            fflush(stdin);
+            return 1;
+        }else{
+            printf("\nNome: %s", posicao.nome);
+            printf("\nQuantidade: %d", posicao.quantidade);
+            printf("\nValor: %.2f", posicao.valor);
+            printf("\nQuantidade Minima: %d", posicao.qntMinima);
+            do{
+                alt = entradaInt("\n\n\nEscolha o que deseja alterar: \n\n1-Nome\n2-Quantidade\n3-Valor\n4-Quantidade Minima\n\n\nOpçao: ");
+                switch(alt){
+                        
+                    case 1:
+                        strcpy(posicao.nome,entradaString("\n\nDigite o novo nome do produto: "));
+                        break;
+                    case 2:
+                        posicao.quantidade = entradaInt("\n\nDigite a nova quantidade do produto: ");
+                        break;
+                    case 3:
+                        posicao.valor = entradaFloat("\n\nDigite o valor do produto:\n");
+                        break;
+                    case 4:
+                        posicao.qntMinima = entradaInt("\n\nDigite a quantidade minima de estoque:  ");
+                        break;
+                    default:
+                        entradaChar("\n\n\n\nOpcao incorreta.\n Encolha entre as opçoes 1 e 4\n\nDigite Qualquer tecla para continuar");
+                }
+                option = entradaChar ("\n\nDeseja alterar outro dado?( 's' ou 'n' ) \n");
+            }while(option == 's');
+            
+            fwrite(&posicao,sizeof(listaMateriais),1,arquivoMat);
+            
+        }
+        fflush(arquivoMat);
+        fclose(arquivoMat);
+        entradaChar("\nAleraçao bem sucedida\nDigite qualquer tecla para continuar\n");
+        fflush(stdin);
+        return 1;
+    }
+}
 
 int consultaMaterialCod(){
     char aux;
     listaMateriais listateste;
     FILE *arquivoMat;
     printf("\n------------------------------------------------------\n");
-    printf("----------------Consulta de Materiais----------------\n");
+    printf("-----------------Consulta de Produtos-----------------\n");
     printf("------------------------------------------------------\n\n");
     
     arquivoMat = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin","a+b");
@@ -312,7 +364,7 @@ int consultaMaterialDesc(){
     int n=0;
     listaMateriais elementoTeste;
     printf("\n------------------------------------------------------\n");
-    printf("----------------Consulta de Materiais----------------\n");
+    printf("----------------Consulta de Produtos----------------\n");
     printf("------------------------------------------------------\n\n");
     FILE *arquivoDm;
     if((arquivoDm = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin", "a+b")) == NULL){
@@ -336,11 +388,11 @@ int consultaMaterialDesc(){
         fflush(stdin);
         return 1;
     }else{
-        printf("\n Codigo do produto: %d", elementoTeste.cod);
-        printf("\n Nome do Produto: %s", elementoTeste.nome);
-        printf("\n Quantidade em Estoque: %d", elementoTeste.quantidade);
-        printf("\n Preco por Unidade: %.2f", elementoTeste.valor);
-        printf("\n Estoque Minimo: %d", elementoTeste.qntMinima);
+        printf("\n\nCodigo do produto: %d", elementoTeste.cod);
+        printf("\n\nNome do Produto: %s", elementoTeste.nome);
+        printf("\n\nQuantidade em Estoque: %d", elementoTeste.quantidade);
+        printf("\n\nPreco por Unidade: %.2f", elementoTeste.valor);
+        printf("\n\nEstoque Minimo: %d", elementoTeste.qntMinima);
     }
     
     fflush(stdin);
@@ -364,7 +416,9 @@ int controleVendas()
     }
     
     fseek(arquivoDf, 0*sizeof(listaFuncionarios), SEEK_SET);
-    printf("\n-------------Geraçao de nota fiscal---------------\n\n");
+    printf("\n------------------------------------------------------\n");
+    printf("----------------Geraçao de Nota Fiscal----------------\n");
+    printf("------------------------------------------------------\n\n\n");
     valor= entradaInt("\nDigite a matricula do vendedor:  ");
     do
     {
@@ -388,9 +442,8 @@ int controleVendas()
     listaMateriais auxMat[100];
     
     printf("\n\n------------------------------------------------------\n");
-    printf("----------------Materiais Vendidos:------------------\n");
+    printf("---------------- Produtos Vendidos:------------------\n");
     printf("------------------------------------------------------\n\n");
-    int contArquivo=0;
     FILE *arquivoDm;
     if((arquivoDm = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin", "r+b")) == NULL)
     {
@@ -450,17 +503,17 @@ int controleVendas()
         if (quant[i] != 0){
             total[i] = auxMat[i].valor * quant[i];
             printf(" %d- %s  - cod %d \n|", i+1, auxMat[i].nome, auxMat[i].cod);
-            printf("  -     %d UN X R$%.2f                    T  R$%.2f\n|\n|" ,quant[i], auxMat[i].valor, total[i]);
+            printf("  -     %d UN X R$%.2f                 T  R$%.2f\n|\n|" ,quant[i], auxMat[i].valor, total[i]);
             totalCompra +=total[i]; //adição do valor total da compra
         }else{
             break; //quebra o laço de impressão caso quant[i] seja igual a zero.
         }
     }
-    printf("\n|\n|Total da Compra:                              R$%.2f\n|", totalCompra);
+    printf("\n|\n|Total da Compra:                           R$%.2f\n|", totalCompra);
     printf("\n|-------------------------------------------------------\n");
     fclose(arquivoDm);
     fflush(stdin);
-    entradaChar("\n\n\n Agradecemos pela compra em nossa loja!\nDigite qualquer tecla para continuar\n");
+    entradaChar("\n\n\nAgradecemos pela compra em nossa loja!\nDigite qualquer tecla para continuar\n");
     fflush(stdin);
     return 1;
 }
@@ -469,7 +522,7 @@ int estoqueAbaixoMinimo()
 {
     listaMateriais matAtual;
     printf("\n------------------------------------------------------\n");
-    printf("----------------Verificação de Estoque-----------------\n");
+    printf("----------------Verificação de Estoque----------------\n");
     printf("------------------------------------------------------\n\n");
     FILE *arquivoDm;
     if((arquivoDm = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin", "rb")) == NULL)
@@ -479,7 +532,7 @@ int estoqueAbaixoMinimo()
         return 0;
     }//Testa a abertura do arquivo.
     
-    
+    printf("\n|-------------------------------------------------------\n|");
     fseek(arquivoDm, 0*sizeof(listaMateriais), SEEK_SET); //vai para o inicio do arquivo
     do
     {
@@ -487,76 +540,21 @@ int estoqueAbaixoMinimo()
         matAtual.quantidade=2;
         fread(&matAtual,sizeof(listaMateriais),1, arquivoDm);
         if (matAtual.quantidade < matAtual.qntMinima)
-            printf("\n|\n|%s abaixo do estoque minimo.\n|  |Quantidade atual: %d - Quantidade minima: %d", matAtual.nome, matAtual.quantidade, matAtual.qntMinima);
+            printf("\n|%s - abaixo do estoque minimo.\n|  |Quantidade atual: %d - Quantidade minima: %d\n|", matAtual.nome, matAtual.quantidade, matAtual.qntMinima);
+        else if (matAtual.quantidade == matAtual.qntMinima)
+            printf("\n|%s - Estoque no minimo.\n|  |Quantidade atual: %d - Quantidade minima: %d\n|", matAtual.nome, matAtual.quantidade, matAtual.qntMinima);
+            
     }
     while(!feof(arquivoDm));
+    printf("\n|-------------------------------------------------------\n");
     //Verifica os materias cadastrados e se eles estão abaixo do estoque minimo, imprimindo as equivalencias
     fclose(arquivoDm);
     fflush(stdin);
-    entradaChar("\n\n\n Consulta bem sucedida\nDigite qualquer tecla para continuar\n");
+    entradaChar("\n\n\nDigite qualquer tecla para continuar\n");
     fflush(stdin);
     return 1;
 }// prompt de final de programa.
 
-int alteracaoMaterial(){
 
-listaMateriais posicao,listanovo;
-char parar,aux,option;
-FILE *arquivoMat;
-int codigo,alt;
-printf("\n\n\n-------------Alterar Dados De Material-------------\n\n");
-arquivoMat = fopen("listamat.bin","a+b");
-
-if(arquivoMat == NULL){
-
-        printf("Arquivo nao pode ser aberto.\n");
-        printf("Ocorreu um erro grave! Use alguma tecla para finalizar:");
-        getc(stdin);
-        return 0;
-    }else{
-        fseek(arquivoMat,0*sizeof(listaMateriais),SEEK_SET);
-      codigo = entradaInt("Digite o codigo do Material para busca&alteracao:\n");
-      do{
-        aux = fread(&posicao,sizeof(listaMateriais),1,arquivoMat);
-        if(posicao.cod == codigo)
-            break;
-      }while(!feof(arquivoMat));
-             if(!(aux)){
-                fflush(stdin);
-                entradaChar("\nCodigo inexistente\nDigite qualquer tecla para continuar\n");
-                fflush(stdin);
-                return 1;
-            }else{
-                printf("\n Nome: %s", posicao.nome);
-                printf("\n Quantidade: %d", posicao.quantidade);
-                printf("\n Valor: %s", posicao.valor);
-                printf("\n Quantidade Minima: %d", posicao.qntMinima);
-            do{
-                alt = entradaInt("\n O que deseja mudar?\n(1-Nome;2-Quantidade;3-Valor;4-Quantidade Minima)");
-                switch(alt){
-
-            case 1:
-                strcpy(listanovo.nome,entradaString("Digite o novo nome do material:\n"));
-            case 2:
-        listanovo.quantidade = entradaInt("Digite a nova quantidade do material:\n");
-            case 3:
-        listanovo.valor = entradaFloat("Digite o valor do material:\n");
-            case 4:
-        listanovo.qntMinima = entradaInt("Digite a quantidade minima de estoque: \n");
-
-                }
-                option = entradaChar ("Deseja alterar outro dado?( 's' ou 'n' ) \n");
-            }while(option == 's');
-                fwrite(&listanovo,sizeof(listaMateriais),1,arquivoMat);
-
-            }
-        fflush(arquivoMat);
-        fclose(arquivoMat);
-        printf("\n Novo cadastro bem sucedido\nDigite qualquer tecla para continuar\n");
-        scanf("%c", &parar);
-        fflush(stdin);
-        return 1;
-}
-}
 
 
