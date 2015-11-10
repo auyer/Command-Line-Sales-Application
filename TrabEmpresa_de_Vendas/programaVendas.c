@@ -88,7 +88,7 @@ int menu(){
             break;
         case 7:
             printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-            // return controleVendas();
+            return controleVendas();
             //controle de vendas (Nota fiscal e consietencia de estoque)
             break;
         case 8:
@@ -285,7 +285,7 @@ int alteracaoMaterial(){
         }else{
             printf("\n Nome: %s", listateste.nome);
             printf("\n Quantidade: %d", listateste.quantidade);
-            printf("\n Valor: %f.2", listateste.valor);
+            printf("\n Valor: %.2f", listateste.valor);
             printf("\n Quantidade Minima: %d", listateste.qntMinima);
         }
         
@@ -344,7 +344,7 @@ int consultaMaterialDesc(){
         printf("\n Codigo do produto: %d", elementoTeste.cod);
         printf("\n Nome do Produto: %s", elementoTeste.nome);
         printf("\n Quantidade em Estoque: %d", elementoTeste.quantidade);
-        printf("\n Preco por Unidade: %f.2", elementoTeste.valor);
+        printf("\n Preco por Unidade: %.2f", elementoTeste.valor);
         printf("\n Estoque Minimo: %d", elementoTeste.qntMinima);
     }
     
@@ -354,7 +354,7 @@ int consultaMaterialDesc(){
     return 1;
 }
 
-Int controleVendas()
+int controleVendas()
 {
 
     char aux;
@@ -369,11 +369,10 @@ Int controleVendas()
     }
 
     fseek(arquivoDf, 0*sizeof(listaFuncionarios), SEEK_SET);
-
+    printf("\n-------------Geraçao de nota fiscal---------------\n\n");
+    valor= entradaInt("\nDigite a matricula do vendedor:  ");
     do
     {
-        valor= entradaInt("\nDigite a matricula do funcionario que deseja buscar: ");
-
         n++;
         aux=fread(&auxFunc,sizeof(listaFuncionarios),1, arquivoDf);
         if(auxFunc.matricula==valor)
@@ -388,11 +387,11 @@ Int controleVendas()
     }
     // Procura pelo funcionario usando a função de pesquisa funcionario adaptada e a armazena para uso futuro.
 
-    char prov, desc;
+    char prov;
     int quebra, i, j=0, quant[100];
     listaMateriais auxMat[100];
 
-    printf("\n------------------------------------------------------\n");
+    printf("\n\n------------------------------------------------------\n");
     printf("-----------------Materiais Vendidos:-------------------\n");
     printf("------------------------------------------------------\n\n");
     FILE *arquivoDm;
@@ -404,14 +403,15 @@ Int controleVendas()
     }
 
     fseek(arquivoDm, 0*sizeof(listaMateriais), SEEK_SET);
-    for (i=0, i<100, i++) // laço para a criação da lista de materiais vendidos.
+    for (i=0; i<100; i++) // laço para a criação da lista de materiais vendidos.
     {
+        int codigo= entradaInt("\nDigite o codigo do produto: ");
         do
         {
-            char *desc= entradaString("\nDigite a descricao do material vendido: ");
+            
             j++;
             prov=fread(&auxMat[i],sizeof(listaMateriais),1, arquivoDm);
-            if(0==strcmp(auxMat[i].nome,desc))
+            if(auxMat[i].cod==codigo)
                 break;
         }
         while(!feof(arquivoDm));
@@ -425,8 +425,8 @@ Int controleVendas()
         {
             quant[i] = entradaInt ("\n Entre com a quantidade do produto vendido:"); 
         }
-        quebra = entradaInt("\nDeseja adicionar mais um material? Digite 1 para sim ou 0 para não: \n")
-        if (quebra = 0)
+        quebra = entradaInt("\nDeseja adicionar mais um material? Digite 1 para sim ou 0 para não: \n");
+        if (quebra == 0)
         {
             quant[i+1] = 0;// Quebra este laço e serve para quebrar um laço mais a frente na impressão da nota fiscal.
             break; 
@@ -434,22 +434,21 @@ Int controleVendas()
     }
 
     float total[100], totalCompra;
-    clrscr();
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     printf("\n------------------------------------------------------\n");
     printf("---------------------Nota Fiscal-----------------------\n");
-    printf("------------------------------------------------------\n\n");
-    printf("\nFuncionario que realizou a venda: %s\n", auxFunc.nome);
-    for(i=0, i<100, i++){
+    printf("\nVendedor: %s - Matricula : %d\n\n", auxFunc.nome, auxFunc.matricula);
+    for(i=0; i<100; i++){
         if (quant[i] != 0){
         total[i] = auxMat[i].valor * quant[i];
-        printf("%d - %s - %d - %d - %f\n", i, auxMat[i].nome, auxMat[i].valor, quant[i], total[i]);
+        printf("%d- %s  - cod %d \n  -     %d UN X R$%.2f -              T  R$%.2f\n", i+1, auxMat[i].nome, auxMat[i].cod, quant[i], auxMat[i].valor, total[i]);
         totalCompra +=total[i]; //adição do valor total da compra
         }else{
         break; //quebra o laço de impressão caso quant[i] seja igual a zero.
         }
     }
-    printf("\nTotal da Compra: %f\n", totalCompra);
-
+    printf("\n\nTotal da Compra:                R$%.2f\n", totalCompra);
+    printf("\n------------------------------------------------------\n");
     fflush(stdin);
     entradaChar("\n\n\n Agradecemos pela compra em nossa loja!\nDigite qualquer tecla para continuar\n");
     fflush(stdin);

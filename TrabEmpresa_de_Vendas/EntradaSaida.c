@@ -13,6 +13,7 @@
 
 int entradaInt(char titulo[]){
     int valor;
+    fflush(stdin);
     printf(" %s",  titulo);
     scanf(" %d", &  valor);
     return valor;
@@ -21,6 +22,7 @@ int entradaInt(char titulo[]){
 float entradaFloat(char titulo[]){
     char valorStr[10];
     float valorF;
+    fflush(stdin);
     printf(" %s",  titulo);
     scanf(" %10[^\n]",  valorStr);
     for( int x=0; x<10;x++){
@@ -34,6 +36,7 @@ float entradaFloat(char titulo[]){
 
 char *entradaString(char *titulo){
     int i;
+    fflush(stdin);
     char *frase = (char*) malloc ((sizeof(char) * sizeof(frase)));
     printf("%s",titulo);
     scanf(" %50[^\n]",  frase);
@@ -41,20 +44,23 @@ char *entradaString(char *titulo){
         frase[i]= (toupper(frase[i]));
         i++;
     }
-    return frase;
-    
+    fflush(stdin);
     return frase;
 }
 char *entradaCPF(char *titulo){
+    fflush(stdin);
     char *frase = (char*) malloc ((sizeof(char) * sizeof(frase)));
     printf("%s",titulo);
     scanf(" %15[^\n]",  frase);
+    fflush(stdin);
     return frase;
 }
 
 char entradaChar(char *titulo){
     char letra;
+    fflush(stdin);
     printf(" %s",titulo);
     scanf(" %c", & letra);
+    fflush(stdin);
     return letra;
 }
