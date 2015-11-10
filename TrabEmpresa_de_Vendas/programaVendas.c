@@ -498,3 +498,65 @@ int estoqueAbaixoMinimo()
     fflush(stdin);
     return 1;
 }// prompt de final de programa.
+int alteracaoMaterial(){
+
+listaMateriais posicao,listanovo;
+char parar,aux,option;
+FILE *arquivoMat;
+int codigo,alt;
+printf("\n\n\n-------------Alterar Dados De Material-------------\n\n");
+arquivoMat = fopen("listamat.bin","a+b");
+
+if(arquivoMat == NULL){
+
+        printf("Arquivo nao pode ser aberto.\n");
+        printf("Ocorreu um erro grave! Use alguma tecla para finalizar:");
+        getc(stdin);
+        return 0;
+    }else{
+        fseek(arquivoMat,0*sizeof(listaMateriais),SEEK_SET);
+      codigo = entradaInt("Digite o codigo do Material para busca&alteracao:\n");
+      do{
+        aux = fread(&posicao,sizeof(listaMateriais),1,arquivoMat);
+        if(posicao.cod == codigo)
+            break;
+      }while(!feof(arquivoMat));
+             if(!(aux)){
+                fflush(stdin);
+                entradaChar("\nCodigo inexistente\nDigite qualquer tecla para continuar\n");
+                fflush(stdin);
+                return 1;
+            }else{
+                printf("\n Nome: %s", posicao.nome);
+                printf("\n Quantidade: %d", posicao.quantidade);
+                printf("\n Valor: %s", posicao.valor);
+                printf("\n Quantidade Minima: %d", posicao.qntMinima);
+            do{
+                alt = entradaInt("\n O que deseja mudar?\n(1-Nome;2-Quantidade;3-Valor;4-Quantidade Minima)");
+                switch(alt){
+
+            case 1:
+                strcpy(listanovo.nome,entradaString("Digite o novo nome do material:\n"));
+            case 2:
+        listanovo.quantidade = entradaInt("Digite a nova quantidade do material:\n");
+            case 3:
+        listanovo.valor = entradaFloat("Digite o valor do material:\n");
+            case 4:
+        listanovo.qntMinima = entradaInt("Digite a quantidade minima de estoque: \n");
+
+                }
+                option = entradaChar ("Deseja alterar outro dado?( 's' ou 'n' ) \n");
+            }while(option == 's');
+                fwrite(&listanovo,sizeof(listaMateriais),1,arquivoMat);
+
+            }
+        fflush(arquivoMat);
+        fclose(arquivoMat);
+        printf("\n Novo cadastro bem sucedido\nDigite qualquer tecla para continuar\n");
+        scanf("%c", &parar);
+        fflush(stdin);
+        return 1;
+}
+}
+
+
