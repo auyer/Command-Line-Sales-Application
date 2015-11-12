@@ -5,6 +5,7 @@
 //  Created by Rafael Auyer on 10/21/15.
 //  Copyright © 2015 Rafael Auyer. All rights reserved.
 //
+// De acordo com o ISO 9171 : Que diz que um dos integrantes fará muito mais que os outros.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -185,10 +186,10 @@ int consultaFuncionario(){
         fflush(stdin);
         return 1;
     }else{
-        printf("\n Nome: %s", elementoTeste.nome);
-        printf("\n Idade: %d", elementoTeste.idade);
-        printf("\n CPF: %s", elementoTeste.cpf);
-        printf("\n Matricula: %d", elementoTeste.matricula);
+        printf("\n\n Nome: %s", elementoTeste.nome);
+        printf("\n\n Idade: %d", elementoTeste.idade);
+        printf("\n\n CPF: %s", elementoTeste.cpf);
+        printf("\n\n Matricula: %d", elementoTeste.matricula);
     }
     
     fflush(stdin);
@@ -226,9 +227,9 @@ int cadastroMateriais(){
         
         fflush(arquivomat);
         
-        strcpy(listanovo.nome,entradaString("\n\nDigite o nome do material: "));
-        listanovo.quantidade = entradaInt("\n\nDigite a quantidade do material: ");
-        listanovo.valor = entradaFloat("\n\nDigite o valor do material:");
+        strcpy(listanovo.nome,entradaString("\n\nDigite o nome do produto: "));
+        listanovo.quantidade = entradaInt("\n\nDigite a quantidade do produto: ");
+        listanovo.valor = entradaFloat("\n\nDigite o valor do produto:");
         listanovo.cod =n;
         listanovo.qntMinima = entradaInt("\n\nDigite a quantidade minima de estoque: ");
         printf("\n\nCodigo do produto: %d",n);
