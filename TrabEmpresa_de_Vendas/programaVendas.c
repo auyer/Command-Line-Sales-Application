@@ -119,7 +119,7 @@ int cadastroFuncionario(){
     printf("------------------------------------------------------\n\n");
     
     FILE *arquivoDf;
-    if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/df.bin", "a+b")) == NULL){
+    if((arquivoDf = fopen("df.bin", "a+b")) == NULL){
         entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa ");
         fflush(stdin);
         return 0;
@@ -164,7 +164,7 @@ int consultaFuncionario(){
     printf("----------------Consulta de Funcionarios---------------\n");
     printf("-------------------------------------------------------\n\n");
     FILE *arquivoDf;
-    if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/df.bin", "a+b")) == NULL){
+    if((arquivoDf = fopen("df.bin", "a+b")) == NULL){
         fflush(stdin);
         entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
         return 0; // Testa a abertura do arquivo
@@ -207,7 +207,7 @@ int cadastroMateriais(){
     printf("\n-------------------------------------------------------\n");
     printf("------------------Cadastro de Produtos-----------------\n");
     printf("-------------------------------------------------------\n\n");
-    arquivomat = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin","a+b");
+    arquivomat = fopen("dm.bin","a+b");
     if(arquivomat == NULL)
     {
         entradaChar("\nArquivo nao pode ser aberto.\n\nDigite Qualquer tecla para Finalizar");
@@ -256,7 +256,7 @@ int alteracaoMaterial(){
     printf("\n------------------------------------------------------\n");
     printf("---------------Alterar Dados De Produto---------------\n");
     printf("------------------------------------------------------\n\n");
-    arquivoMat = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin","r+b");
+    arquivoMat = fopen("dm.bin","r+b");
     
     if(arquivoMat == NULL){
         entradaChar("\nOcorreu um erro grave! Use alguma tecla para finalizar:");
@@ -322,7 +322,7 @@ int consultaMaterialCod(){
     printf("-----------------Consulta de Produtos-----------------\n");
     printf("------------------------------------------------------\n\n");
     
-    arquivoMat = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin","a+b");
+    arquivoMat = fopen("dm.bin","a+b");
     
     if(arquivoMat == NULL)
     {
@@ -368,7 +368,7 @@ int consultaMaterialDesc(){
     printf("----------------Consulta de Produtos----------------\n");
     printf("------------------------------------------------------\n\n");
     FILE *arquivoDm;
-    if((arquivoDm = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin", "a+b")) == NULL){
+    if((arquivoDm = fopen("dm.bin", "a+b")) == NULL){
         fflush(stdin);
         entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
         return 0;
@@ -409,7 +409,7 @@ int controleVendas()
     int n=0, valor=0;
     listaFuncionarios auxFunc;
     FILE *arquivoDf;
-    if((arquivoDf = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/df.bin", "a+b")) == NULL)
+    if((arquivoDf = fopen("df.bin", "a+b")) == NULL)
     {
         fflush(stdin);
         entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
@@ -446,7 +446,7 @@ int controleVendas()
     printf("---------------- Produtos Vendidos:------------------\n");
     printf("------------------------------------------------------\n\n");
     FILE *arquivoDm;
-    if((arquivoDm = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin", "r+b")) == NULL)
+    if((arquivoDm = fopen("dm.bin", "r+b")) == NULL)
     {
         fflush(stdin);
         entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
@@ -526,7 +526,7 @@ int estoqueAbaixoMinimo()
     printf("----------------Verificação de Estoque----------------\n");
     printf("------------------------------------------------------\n\n");
     FILE *arquivoDm;
-    if((arquivoDm = fopen("/Users/Auyer/Documents/Facul/C/PC1_fontes/TrabEmpresa_de_Vendas/TrabEmpresa_de_Vendas/dm.bin", "rb")) == NULL)
+    if((arquivoDm = fopen("dm.bin", "rb")) == NULL)
     {
         fflush(stdin);
         entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
