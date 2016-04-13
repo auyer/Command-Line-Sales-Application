@@ -9,8 +9,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "programaVendas.h"
-#include "EntradaSaida.h"
+#include "salesApplication.h"
+#include "InputOutput.h"
 
 
 
@@ -38,7 +38,7 @@ int main(int argc, const char * argv[]) {
     fclose(arquivoDm);
     
     
-    controle();
+    controll();
     return 0;
 }
 

@@ -1,39 +1,39 @@
 //
-//  programaVendas.h
+//  salesApplication.h
 //  TrabEmpresa de Vendas
 //
 //  Created by Rafael Auyer on 10/21/15.
 //  Copyright © 2015 Rafael Auyer. All rights reserved.
 //
 
-#ifndef programaVendas_h
-#define programaVendas_h
+#ifndef salesApplication_h
+#define salesApplication_h
 
 
 
-#endif /* programaVendas_h */
-
-typedef struct
-{
-    char nome[50];
-    int idade;
-    char cpf[15];
-    int matricula;
-    
-    
-} listaFuncionarios; // Declaraçao do tipo de estrutura usada para armazenar os Funcionarios
+#endif /* salesApplication_h */
 
 typedef struct
 {
-    char nome[50];
-    int cod;
-    int quantidade;
-    float valor;
-    int qntMinima;
+    char name[50];
+    int age;
+    char _id[15];
+    int reg;
     
-} listaMateriais; // Declaracao do tipo de estrutura usada para armazenar os Materiais
+    
+} listEmpl; // Declaraçao do tipo de estrutura usada para armazenar os Funcionarios
 
-void controle();
+typedef struct
+{
+    char name[50];
+    int _id;
+    int amount;
+    float price;
+    int minAmount;
+    
+} listProducts; // Declaracao do tipo de estrutura usada para armazenar os Materiais
+
+void controll();
 //Abre o programa. Controla a abertura, reabertura e fechamento do menu.
 //Finaliza o programa com os agradecimentos. Nao há entradas ou saidas de dados.
 //Autor: Rafael Passos
@@ -46,45 +46,45 @@ int menu();
 
 
 
-int cadastroFuncionario();
+int enrollEmployee();
 //cadastro de funcionario
 //retorna 1 se o cadastro foi efetuado, 0 se falhou
 //Autor: Rafael Passos
 
-int consultaFuncionario();
+int emplSearch();
 //consulta de funcionario
 //Entrada: struct de cadastro de funcionarios
 //retorna se a consulta foi bem sucedida, 0 se falhou
 //Autor: Rafael Passos
 
-int cadastroMateriais();
+int addProduct();
 //cadastra os materiais
 //retorna 1 se o cadastro foi efetuado, 0 se falhou
 //Autor: Felipe Ministerio
 
-int alteracaoMaterial();
+int editProduct();
 //alteracao de materiais
 //retorna 1 se a alteracao foi bem sucedida, 0 se falhou
 //Autor: Felipe Ministerio
 
 
-int consultaMaterialCod();
-//consulta de materiais por codigo
+int productSearch_id();
+//consulta de materiais por _idigo
 //retorna se a consulta foi bem sucedida, 0 se falhou
 //Autor: Felipe Ministerio
 
-int consultaMaterialDesc();
+int productSearch_name();
 //consulta de materiais por descricao
 //retorna se a consulta foi bem sucedida, 0 se falhou
 //Autor: Pedro Hartmann
 
-int controleVendas();
-//controle de vendas (Nota fiscal e consietencia de estoque)
+int saleSystem();
+//controll de vendas (Nota fiscal e consietencia de estoque)
 //Imprime uma nota fiscal na tela
 //Autor: Pedro Hartmann
 
 
-int estoqueAbaixoMinimo();
+int lowAmount();
 //lista de produtos abaixo do estoque
 //retorna 1 se a consulta foi bem sucedida
 //Autor: Pedro Hartmann

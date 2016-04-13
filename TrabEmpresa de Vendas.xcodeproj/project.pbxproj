@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F1E9CF7E1BDE82D70004007E /* EntradaSaida.c in Sources */ = {isa = PBXBuildFile; fileRef = F1E9CF791BDE82D70004007E /* EntradaSaida.c */; };
+		F14AB3041CBED22000FCA042 /* InputOutput.c in Sources */ = {isa = PBXBuildFile; fileRef = F14AB3021CBED22000FCA042 /* InputOutput.c */; };
+		F14AB3071CBED4C600FCA042 /* salesApplication.c in Sources */ = {isa = PBXBuildFile; fileRef = F14AB3051CBED4C600FCA042 /* salesApplication.c */; };
 		F1E9CF7F1BDE82D70004007E /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = F1E9CF7B1BDE82D70004007E /* main.c */; };
-		F1E9CF801BDE82D70004007E /* programaVendas.c in Sources */ = {isa = PBXBuildFile; fileRef = F1E9CF7C1BDE82D70004007E /* programaVendas.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,11 +26,11 @@
 
 /* Begin PBXFileReference section */
 		F10B28791BD7B334002B38D7 /* TrabEmpresa de Vendas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "TrabEmpresa de Vendas"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1E9CF791BDE82D70004007E /* EntradaSaida.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = EntradaSaida.c; path = TrabEmpresa_de_Vendas/EntradaSaida.c; sourceTree = SOURCE_ROOT; };
-		F1E9CF7A1BDE82D70004007E /* EntradaSaida.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntradaSaida.h; path = TrabEmpresa_de_Vendas/EntradaSaida.h; sourceTree = SOURCE_ROOT; };
+		F14AB3021CBED22000FCA042 /* InputOutput.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = InputOutput.c; path = TrabEmpresa_de_Vendas/InputOutput.c; sourceTree = SOURCE_ROOT; };
+		F14AB3031CBED22000FCA042 /* InputOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputOutput.h; path = TrabEmpresa_de_Vendas/InputOutput.h; sourceTree = SOURCE_ROOT; };
+		F14AB3051CBED4C600FCA042 /* salesApplication.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = salesApplication.c; path = TrabEmpresa_de_Vendas/salesApplication.c; sourceTree = SOURCE_ROOT; };
+		F14AB3061CBED4C600FCA042 /* salesApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = salesApplication.h; path = TrabEmpresa_de_Vendas/salesApplication.h; sourceTree = SOURCE_ROOT; };
 		F1E9CF7B1BDE82D70004007E /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = main.c; path = TrabEmpresa_de_Vendas/main.c; sourceTree = SOURCE_ROOT; };
-		F1E9CF7C1BDE82D70004007E /* programaVendas.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = programaVendas.c; path = TrabEmpresa_de_Vendas/programaVendas.c; sourceTree = SOURCE_ROOT; };
-		F1E9CF7D1BDE82D70004007E /* programaVendas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = programaVendas.h; path = TrabEmpresa_de_Vendas/programaVendas.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,11 +63,11 @@
 		F10B287B1BD7B334002B38D7 /* TrabEmpresa de Vendas */ = {
 			isa = PBXGroup;
 			children = (
-				F1E9CF7A1BDE82D70004007E /* EntradaSaida.h */,
-				F1E9CF791BDE82D70004007E /* EntradaSaida.c */,
 				F1E9CF7B1BDE82D70004007E /* main.c */,
-				F1E9CF7C1BDE82D70004007E /* programaVendas.c */,
-				F1E9CF7D1BDE82D70004007E /* programaVendas.h */,
+				F14AB3021CBED22000FCA042 /* InputOutput.c */,
+				F14AB3031CBED22000FCA042 /* InputOutput.h */,
+				F14AB3051CBED4C600FCA042 /* salesApplication.c */,
+				F14AB3061CBED4C600FCA042 /* salesApplication.h */,
 			);
 			path = "TrabEmpresa de Vendas";
 			sourceTree = "<group>";
@@ -131,9 +131,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1E9CF801BDE82D70004007E /* programaVendas.c in Sources */,
-				F1E9CF7E1BDE82D70004007E /* EntradaSaida.c in Sources */,
 				F1E9CF7F1BDE82D70004007E /* main.c in Sources */,
+				F14AB3041CBED22000FCA042 /* InputOutput.c in Sources */,
+				F14AB3071CBED4C600FCA042 /* salesApplication.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
