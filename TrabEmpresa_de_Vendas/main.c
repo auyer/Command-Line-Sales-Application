@@ -16,26 +16,26 @@
 
 int main(int argc, const char * argv[]) {
     
-    FILE *arquivoDf; // Criaçao e/ou teste do arquivo de Funcionarios
-    if((arquivoDf = fopen("df.bin", "rb")) == NULL){ //teste de exitencia
-        if((arquivoDf = fopen("df.bin", "ab"))    == NULL){ //teste de erro na criaçao
-            entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
+    FILE *employeesFIle; // Criaçao e/ou teste do arquivo de Funcionarios
+    if((employeesFIle = fopen("df.bin", "rb")) == NULL){ //teste de exitencia
+        if((employeesFIle = fopen("df.bin", "ab"))    == NULL){ //teste de erro na criaçao
+            inputChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
             fflush(stdin);
             return 0;
         }
     }
-    fclose(arquivoDf);
+    fclose(employeesFIle);
     
-    FILE *arquivoDm; // Criaçao e/ou teste do arquivo de Materiais
-    if((arquivoDf = fopen("dm.bin", "rb")) == NULL){ //Teste de existencia
-        if((arquivoDf = fopen("dm.bin", "ab"))    == NULL){ // Teste de erro na criaçao
-            entradaChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
+    FILE *productsFile; // Criaçao e/ou teste do arquivo de Materiais
+    if((productsFile = fopen("dm.bin", "rb")) == NULL){ //Teste de existencia
+        if((productsFile = fopen("dm.bin", "ab"))    == NULL){ // Teste de erro na criaçao
+            inputChar("\n-----\nErro na abertura ou criaçao do arquivo de parametros\n Contacte o suporte\n\n Tecle enter para fechar o programa\n");
             fflush(stdin);
             return 0;
         }
     }
     
-    fclose(arquivoDm);
+    fclose(productsFile);
     
     
     controll();
